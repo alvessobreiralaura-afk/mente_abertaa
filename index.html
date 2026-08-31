@@ -1,0 +1,1668 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mente Aberta — Bem-estar emocional para estudantes e psicólogos</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/pagina-inicial.css">
+</head>
+<body>
+
+<div class="toast-stack" id="toast-stack"></div>
+
+<!-- Modal genérico reutilizado por várias telas -->
+<div class="modal-overlay" id="generic-modal">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal()">✕</button>
+    <div id="modal-body"></div>
+  </div>
+</div>
+
+<div id="site-wrapper">
+<header class="site-header">
+  <nav class="nav container">
+    <a href="#top" class="brand">
+      <span class="brand-mark">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M9 3C6 3 4 5 4 7.5C4 8.3 4.2 9 4.6 9.6C3.6 10.2 3 11.3 3 12.5C3 14.2 4.2 15.6 5.8 15.9C5.9 17.7 7.4 19 9.1 19C9.6 19 10 18.9 10.4 18.7C10.9 20 12.2 21 13.7 21C15.5 21 17 19.7 17.3 18C18.9 17.7 20 16.3 20 14.7C20 13.7 19.6 12.8 18.9 12.2C19.6 11.5 20 10.5 20 9.5C20 7.2 18.1 5.4 15.8 5.5C15.2 4 13.7 3 12 3C10.9 3 9.9 3.4 9 3Z" stroke="white" stroke-width="1.4" stroke-linejoin="round"/>
+        </svg>
+      </span>
+      Mente Aberta
+    </a>
+
+    <input type="checkbox" id="menu-check">
+    <ul class="nav-links">
+      <li><a href="#produtos">Produtos</a></li>
+      <li><a href="#recursos-app">Recursos</a></li>
+      <li><a href="#como-funciona">Modo</a></li>
+      <li><a href="#psicologos">Psicólogos</a></li>
+      <li><a href="#planos">Planos</a></li>
+      <li><a href="#seguranca">Segurança</a></li>
+      <li><a href="#faq">Dúvidas</a></li>
+      <li><a href="#rodape">Contato</a></li>
+    </ul>
+
+    <div class="nav-actions">
+      <a href="#" class="btn btn-ghost btn-sm" onclick="openAuth('student','login');return false;">Entrar</a>
+      <a href="#" class="btn btn-primary btn-sm" onclick="openAuth('student','signup');return false;">Começar</a>
+      <label for="menu-check" class="nav-toggle" aria-label="Abrir menu">
+        <span></span><span></span><span></span>
+      </label>
+    </div>
+  </nav>
+</header>
+
+<main id="top">
+
+  <!-- topo (hero) -->
+  <section class="hero">
+    <div class="container hero-grid">
+      <div class="hero-copy">
+        <span class="eyebrow">App de bem-estar emocional</span>
+        <h1>Sua mente merece atenção <em>todos os dias.</em></h1>
+        <p>Baixe o app Mente Aberta e leve o check-in diário de humor, diário emocional, exercícios guiados, relatórios automáticos e alertas de risco no bolso — tudo isso pensado para estudantes e psicólogos que precisam de dados reais para cuidar da saúde mental.</p>
+        <div class="hero-ctas store-badges">
+          <a href="#" class="btn store-badge">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M16.5 3c.1 1.2-.4 2.4-1.1 3.2-.7.9-1.9 1.6-3 1.5-.1-1.2.5-2.4 1.2-3.2C14.3 3.6 15.5 3 16.5 3zM20.6 17.1c-.5 1.1-1 2.1-1.8 3.1-.9 1.2-1.9 2.6-3.2 2.6-1.2 0-1.6-.8-3-.8s-1.9.8-3 .8c-1.3 0-2.3-1.3-3.2-2.5-1.9-2.5-3.3-7-1.4-10 .9-1.5 2.6-2.5 4.3-2.5 1.3 0 2.4.9 3.2.9.8 0 2.1-1.1 3.6-.9.6 0 2.4.2 3.5 1.9-.1.1-2.1 1.2-2.1 3.6 0 2.9 2.5 3.9 2.5 3.9-.1.2-.3.9-1.4 1.9z" fill="white"/></svg>
+            <span class="store-badge-text"><small>Baixar na</small><span>App Store</span></span>
+          </a>
+          <a href="#" class="btn store-badge">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M3.6 2.6c-.4.3-.6.8-.6 1.4v16c0 .6.2 1.1.6 1.4l.1.1L13 12.2v-.4L3.7 2.5l-.1.1z" fill="#00D8FF"/><path d="M16 15.2 13 12.2v-.4l3-3 3.5 2c1 .6 1 1.6 0 2.2l-3.5 2.2z" fill="#FFC500"/><path d="M16 15.2 13 12l-9.4 9.4c.3.4.9.5 1.6.1L16 15.2z" fill="#FF3A44"/><path d="M16 8.8 5.2 2.5c-.7-.4-1.3-.3-1.6.1L13 12l3-3.2z" fill="#00E177"/></svg>
+            <span class="store-badge-text"><small>Disponível no</small><span>Google Play</span></span>
+          </a>
+        </div>
+        <div class="hero-note">
+          <div class="avatars"><span></span><span></span><span></span><span></span></div>
+          <span>Mais de 12 mil estudantes já usam o app em todo o Brasil</span>
+        </div>
+      </div>
+
+      <div class="hero-visual">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+
+        <div class="phone-frame">
+          <div class="phone-screen">
+            <div class="checkin-card">
+              <h4>Como você está hoje?</h4>
+              <p class="checkin-sub">Toque no emoji que representa seu humor</p>
+              <div class="mood-row">
+                <div class="mood-btn">😄</div>
+                <div class="mood-btn active">🙂</div>
+                <div class="mood-btn">😐</div>
+                <div class="mood-btn">😔</div>
+                <div class="mood-btn">😣</div>
+              </div>
+              <div class="chart-box">
+                <div class="chart-box-head">
+                  <span>Evolução da semana</span>
+                  <span>+12%</span>
+                </div>
+                <svg class="sparkline" viewBox="0 0 240 60" preserveAspectRatio="none">
+                  <polyline points="0,44 34,50 68,30 102,38 136,18 170,26 205,8 240,14" fill="none" stroke="#4A5FC1" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="float-chip chip-top">
+          <span class="chip-dot"></span> Check-in feito
+        </div>
+        <div class="float-chip chip-bottom">
+          <span class="chip-dot alert"></span> 3 alertas ativos
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- logos de confiança -->
+  <div class="trust-bar">
+    <div class="container">
+      <div class="trust-item"><strong>12.400+</strong> estudantes ativos</div>
+      <div class="trust-item"><strong>860+</strong> psicólogos parceiros</div>
+      <div class="trust-item"><strong>94%</strong> de adesão semanal</div>
+      <div class="trust-item"><strong>3min</strong> por check-in</div>
+    </div>
+  </div>
+
+  <!-- números de impacto -->
+  <section class="stats-section">
+    <div class="container">
+      <div class="stats-grid">
+        <div class="stat-block">
+          <div class="num">12.400+</div>
+          <div class="lbl">Estudantes usando o app todos os dias</div>
+        </div>
+        <div class="stat-block">
+          <div class="num">860+</div>
+          <div class="lbl">Psicólogos acompanhando pacientes pelo painel</div>
+        </div>
+        <div class="stat-block">
+          <div class="num">340 mil+</div>
+          <div class="lbl">Check-ins de humor registrados até hoje</div>
+        </div>
+        <div class="stat-block">
+          <div class="num">4,8/5</div>
+          <div class="lbl">Nota média na App Store e no Google Play</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- produtos (3 colunas) -->
+  <section class="section" id="produtos">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">O que oferecemos</span>
+        <h2>Um app, três formas de cuidar</h2>
+        <p>Cada perfil tem uma experiência própria, pensada para o que realmente importa no dia a dia emocional.</p>
+      </div>
+
+      <div class="products-grid">
+
+        <article class="product-card students">
+          <div class="product-icon">🙂</div>
+          <h3>Para estudantes</h3>
+          <p>Check-in diário de humor, diário emocional e exercícios guiados de respiração e foco.</p>
+          <ul class="product-list">
+            <li><span>Check-in em menos de 3 minutos</span></li>
+            <li><span>Diário emocional privado</span></li>
+            <li><span>Plano de autocuidado personalizado</span></li>
+          </ul>
+          <a href="#" class="product-link" onclick="openAuth('student','signup');return false;">Baixar o app →</a>
+        </article>
+
+        <article class="product-card psychologists" id="psicologos">
+          <div class="product-icon">🩺</div>
+          <h3>Para psicólogos</h3>
+          <p>Painel com todos os pacientes, histórico emocional e alertas automáticos de risco.</p>
+          <ul class="product-list">
+            <li><span>Alertas de queda de humor em tempo real</span></li>
+            <li><span>Histórico emocional por paciente</span></li>
+            <li><span>Envio de mensagens e planos de ação</span></li>
+          </ul>
+          <a href="#" class="product-link" onclick="openAuth('psych','signup');return false;">Atender pacientes →</a>
+        </article>
+
+        <article class="product-card insights">
+          <div class="product-icon">📊</div>
+          <h3>Insights inteligentes</h3>
+          <p>Relatórios automáticos, gráficos de evolução e recomendações baseadas em dados reais.</p>
+          <ul class="product-list">
+            <li><span>Relatório semanal em PDF</span></li>
+            <li><span>Comparativo mês a mês</span></li>
+            <li><span>Recomendações de recursos e técnicas</span></li>
+          </ul>
+          <a href="#cta" class="product-link">Ver exemplo de relatório →</a>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- grade de recursos -->
+  <section class="section feature-section" id="recursos-app">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">Tudo dentro do app</span>
+        <h2>Recursos pensados para o dia a dia emocional</h2>
+        <p>O Mente Aberta reúne em um só lugar as ferramentas que ajudam você a entender, registrar e cuidar do que está sentindo — sem depender de planilhas ou anotações soltas.</p>
+      </div>
+
+      <div class="feature-grid">
+        <div class="feature-card">
+          <div class="feature-icon">🙂</div>
+          <h4>Check-in diário de humor</h4>
+          <p>Registre em menos de 3 minutos como você está se sentindo, com emojis, nível de intensidade e tags de emoção.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">📔</div>
+          <h4>Diário emocional privado</h4>
+          <p>Escreva livremente sobre o seu dia. Só você (e, se autorizar, seu psicólogo) tem acesso ao conteúdo.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🫁</div>
+          <h4>Exercícios de respiração</h4>
+          <p>Sessões guiadas de respiração, relaxamento muscular e mindfulness para momentos de ansiedade ou estresse.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">📈</div>
+          <h4>Gráficos de evolução</h4>
+          <p>Veja sua tendência de humor ao longo dos dias, semanas e meses, com comparativos automáticos.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🔔</div>
+          <h4>Lembretes inteligentes</h4>
+          <p>Notificações que se ajustam ao seu horário para lembrar do check-in sem virar incômodo.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🚨</div>
+          <h4>Alertas de risco em tempo real</h4>
+          <p>Quedas bruscas de humor ou sinais de crise disparam um alerta automático para o psicólogo responsável.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🧾</div>
+          <h4>Relatórios em PDF</h4>
+          <p>Relatório semanal e mensal, pronto para exportar e compartilhar com seu psicólogo ou responsável.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🔒</div>
+          <h4>Dados criptografados</h4>
+          <p>Tudo o que você escreve é criptografado de ponta a ponta e segue a LGPD, com controle total sobre o que compartilhar.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🧘</div>
+          <h4>Biblioteca de técnicas</h4>
+          <p>Conteúdos curtos sobre TCC, regulação emocional, sono e foco, escritos com linguagem acessível.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">💬</div>
+          <h4>Mensagens com o psicólogo</h4>
+          <p>Canal direto e assíncrono para receber orientações entre uma sessão e outra, sem trocar de app.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🆘</div>
+          <h4>Botão de emergência</h4>
+          <p>Acesso rápido a contatos de apoio universitário, linha de crise e compartilhamento com um responsável.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🏆</div>
+          <h4>Sequências e metas</h4>
+          <p>Acompanhe sua constância nos check-ins e desbloqueie pequenas metas de autocuidado ao longo do mês.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- telas explicativas -->
+  <section class="section">
+    <div class="container">
+
+      <div class="split-row">
+        <div class="split-copy">
+          <span class="eyebrow">Para estudantes</span>
+          <h3>Três minutos por dia para entender o que você sente</h3>
+          <p>O check-in foi desenhado para ser rápido o suficiente para virar hábito: toque no emoji, escolha a intensidade, marque as emoções e, se quiser, escreva um parágrafo sobre o seu dia. Tudo fica salvo automaticamente no seu diário emocional.</p>
+          <ul class="product-list">
+            <li><span>Check-in em 3 passos, sem formulários longos</span></li>
+            <li><span>Histórico completo sempre disponível para consulta</span></li>
+            <li><span>Sugestões de exercícios com base no que você sentiu</span></li>
+          </ul>
+        </div>
+        <div class="split-visual">
+          <div class="mini-panel">
+            <h5>Como você está hoje?</h5>
+            <div class="app-mood-grid" style="grid-template-columns:repeat(5,1fr);">
+              <div class="app-mood-opt">😄<small>Feliz</small></div>
+              <div class="app-mood-opt selected">😰<small>Ansioso</small></div>
+              <div class="app-mood-opt">😔<small>Triste</small></div>
+              <div class="app-mood-opt">😠<small>Irritado</small></div>
+              <div class="app-mood-opt">😐<small>Neutro</small></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="split-row reverse">
+        <div class="split-copy">
+          <span class="eyebrow">Para psicólogos</span>
+          <h3>Um painel clínico com o histórico emocional de cada paciente</h3>
+          <p>Cada paciente vinculado ao seu perfil aparece com gráfico de evolução, emoções predominantes da semana e alertas automáticos quando algo foge do padrão — para você priorizar quem precisa de atenção primeiro.</p>
+          <ul class="product-list">
+            <li><span>Lista de pacientes ordenada por nível de risco</span></li>
+            <li><span>Envio de mensagens e planos de ação direto pelo app</span></li>
+            <li><span>Relatório comparativo mês a mês, pronto para exportar</span></li>
+          </ul>
+        </div>
+        <div class="split-visual">
+          <div class="mini-panel">
+            <h5>Alertas ativos</h5>
+            <div class="app-emergency" style="margin-bottom:10px;">
+              <div style="font-size:1.1rem;">🔴</div>
+              <div><div style="font-weight:700; font-size:0.86rem;">Laura Alves</div><div style="font-size:0.78rem; color:var(--text-muted);">Ansiedade elevada há 7 dias</div></div>
+            </div>
+            <div class="app-emergency">
+              <div style="font-size:1.1rem;">🔴</div>
+              <div><div style="font-weight:700; font-size:0.86rem;">Vitor Rodrigues</div><div style="font-size:0.78rem; color:var(--text-muted);">Queda brusca de humor há 3 dias</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- como funciona -->
+  <section class="section how-section" id="como-funciona">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">Como funciona</span>
+        <h2>Do primeiro check-in ao acompanhamento clínico</h2>
+        <p>Um fluxo simples que transforma sentimentos do dia a dia em cuidado contínuo.</p>
+      </div>
+
+      <div class="how-grid">
+        <div class="how-step">
+          <div class="how-step-divider"></div>
+          <span class="step-num">01</span>
+          <h4>Crie sua conta</h4>
+          <p>Escolha se você é estudante ou psicólogo e personalize seu perfil em segundos.</p>
+        </div>
+        <div class="how-step">
+          <div class="how-step-divider"></div>
+          <span class="step-num">02</span>
+          <h4>Faça seu check-in</h4>
+          <p>Registre humor e sentimentos todos os dias com poucos toques na tela.</p>
+        </div>
+        <div class="how-step">
+          <div class="how-step-divider"></div>
+          <span class="step-num">03</span>
+          <h4>Acompanhe a evolução</h4>
+          <p>Veja gráficos, tendências e observações automáticas sobre seu bem-estar.</p>
+        </div>
+        <div class="how-step">
+          <div class="how-step-divider"></div>
+          <span class="step-num">04</span>
+          <h4>Receba apoio</h4>
+          <p>Psicólogos recebem alertas e podem agir antes que o quadro se agrave.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- depoimentos -->
+  <section class="section">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">Quem usa, recomenda</span>
+        <h2>Histórias de estudantes e psicólogos</h2>
+        <p>Depoimentos de pessoas que usam o Mente Aberta no dia a dia — na faculdade e no consultório.</p>
+      </div>
+      <div class="testi-grid">
+        <article class="testi-card">
+          <span class="testi-stars">★★★★★</span>
+          <p>"O check-in virou parte da minha rotina antes de dormir. Consigo ver quando uma semana de provas está pesando no meu humor antes mesmo de perceber conscientemente."</p>
+          <div class="testi-person">
+            <span class="testi-avatar" style="background:#F2C36B;"></span>
+            <div><div class="name">Larissa Andrade</div><div class="role">Estudante de Psicologia</div></div>
+          </div>
+        </article>
+        <article class="testi-card">
+          <span class="testi-stars">★★★★★</span>
+          <p>"Os alertas automáticos mudaram minha forma de atender. Consigo priorizar quem está em queda de humor há dias, em vez de esperar a próxima sessão agendada."</p>
+          <div class="testi-person">
+            <span class="testi-avatar" style="background:#E8646B;"></span>
+            <div><div class="name">Dr. Rafael Nogueira</div><div class="role">Psicólogo clínico, CRP 06/12345</div></div>
+          </div>
+        </article>
+        <article class="testi-card">
+          <span class="testi-stars">★★★★★</span>
+          <p>"Uso o diário emocional todos os dias. É o único app que consegui manter por mais de um mês porque leva mesmo poucos minutos."</p>
+          <div class="testi-person">
+            <span class="testi-avatar" style="background:#6FCF97;"></span>
+            <div><div class="name">Paulo Égidio</div><div class="role">Estudante de Engenharia</div></div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- parceiros -->
+  <section class="section" style="padding-top:0;">
+    <div class="container">
+      <div class="section-head" style="margin-bottom:32px;">
+        <span class="eyebrow">Parcerias</span>
+        <h2 style="font-size:1.4rem;">Presente em universidades e clínicas parceiras</h2>
+      </div>
+      <div class="partners-row">
+        <span class="partner-logo">UFR</span>
+        <span class="partner-logo">Clínica Vida Plena</span>
+        <span class="partner-logo">PUC Saúde Mental</span>
+        <span class="partner-logo">Instituto Bem Estar</span>
+        <span class="partner-logo">Rede CAPS Jovem</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- planos e preços -->
+  <section class="section" id="planos">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">Planos</span>
+        <h2>Gratuito para estudantes, completo para clínicas</h2>
+        <p>Comece sem pagar nada. Psicólogos e clínicas têm planos com painel completo de pacientes e alertas automáticos.</p>
+      </div>
+      <div class="pricing-grid">
+        <div class="price-card">
+          <h4>Estudante</h4>
+          <div class="price-value">Grátis</div>
+          <p class="desc">Tudo o que você precisa para cuidar da sua rotina emocional.</p>
+          <ul class="product-list">
+            <li><span>Check-in diário de humor</span></li>
+            <li><span>Diário emocional privado</span></li>
+            <li><span>Exercícios de respiração e mindfulness</span></li>
+            <li><span>Relatório semanal em PDF</span></li>
+          </ul>
+          <a href="#" class="btn btn-ghost" style="margin-top:auto;" onclick="openAuth('student','signup');return false;">Baixar grátis</a>
+        </div>
+        <div class="price-card featured">
+          <span class="price-badge">Mais popular</span>
+          <h4>Psicólogo autônomo</h4>
+          <div class="price-value">R$ 79<small>/mês</small></div>
+          <p class="desc">Painel completo para acompanhar seus pacientes.</p>
+          <ul class="product-list">
+            <li><span>Até 30 pacientes vinculados</span></li>
+            <li><span>Alertas automáticos de risco</span></li>
+            <li><span>Mensagens e planos de ação</span></li>
+            <li><span>Relatórios comparativos mês a mês</span></li>
+          </ul>
+          <a href="#" class="btn btn-primary" style="margin-top:auto;" onclick="openAuth('psych','signup');return false;">Começar teste grátis</a>
+        </div>
+        <div class="price-card">
+          <h4>Clínicas e universidades</h4>
+          <div class="price-value">Sob consulta</div>
+          <p class="desc">Painel multiusuário com gestão por equipe e integrações.</p>
+          <ul class="product-list">
+            <li><span>Pacientes e psicólogos ilimitados</span></li>
+            <li><span>Painel administrativo por unidade</span></li>
+            <li><span>Relatórios institucionais consolidados</span></li>
+            <li><span>Onboarding e suporte dedicado</span></li>
+          </ul>
+          <a href="#rodape" class="btn btn-ghost" style="margin-top:auto;">Falar com vendas</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- segurança -->
+  <section class="section how-section" id="seguranca">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">Privacidade em primeiro lugar</span>
+        <h2>Seus dados emocionais são seus</h2>
+        <p>O Mente Aberta foi construído com privacidade desde o design. Nada é compartilhado sem a sua autorização explícita.</p>
+      </div>
+      <div class="security-grid">
+        <div class="security-card">
+          <div class="ic">🔐</div>
+          <div><h4>Criptografia de ponta a ponta</h4><p>Check-ins e anotações do diário são criptografados no dispositivo antes de saírem para os servidores.</p></div>
+        </div>
+        <div class="security-card">
+          <div class="ic">📜</div>
+          <div><h4>Conformidade com a LGPD</h4><p>Você pode exportar ou excluir seus dados a qualquer momento, direto pelas configurações do app.</p></div>
+        </div>
+        <div class="security-card">
+          <div class="ic">🙈</div>
+          <div><h4>Compartilhamento opcional</h4><p>Só o psicólogo vinculado ao seu perfil vê seu histórico — e só depois que você autoriza o vínculo.</p></div>
+        </div>
+        <div class="security-card">
+          <div class="ic">🧑‍⚕️</div>
+          <div><h4>Psicólogos verificados</h4><p>Todo profissional cadastrado tem o CRP validado antes de acessar o painel clínico.</p></div>
+        </div>
+        <div class="security-card">
+          <div class="ic">🗄️</div>
+          <div><h4>Backups automáticos</h4><p>Seus registros ficam salvos com segurança, mesmo se você trocar de aparelho.</p></div>
+        </div>
+        <div class="security-card">
+          <div class="ic">🛑</div>
+          <div><h4>Modo emergência</h4><p>Em caso de crise, o app prioriza contatos de apoio reais em vez de manter você sozinho na tela.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- dúvidas frequentes -->
+  <section class="section" id="faq">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">Perguntas frequentes</span>
+        <h2>Ainda com dúvidas sobre o app?</h2>
+      </div>
+      <div class="faq-list">
+        <details class="faq-item" open>
+          <summary>O app substitui o acompanhamento com um psicólogo?</summary>
+          <p>Não. O Mente Aberta é uma ferramenta de apoio e monitoramento diário, feita para complementar — e não substituir — o acompanhamento profissional com um psicólogo.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Preciso pagar para usar como estudante?</summary>
+          <p>Não. O plano para estudantes é gratuito e inclui check-in diário, diário emocional, exercícios guiados e relatório semanal em PDF.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Como funciona o vínculo com um psicólogo?</summary>
+          <p>Você convida ou aceita o convite de um psicólogo cadastrado. Só depois desse vínculo autorizado o profissional passa a ver seu histórico emocional.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Meus dados ficam seguros?</summary>
+          <p>Sim. Usamos criptografia de ponta a ponta e seguimos a LGPD. Você pode exportar ou apagar seus dados quando quiser, direto no app.</p>
+        </details>
+        <details class="faq-item">
+          <summary>O app funciona offline?</summary>
+          <p>O check-in pode ser preenchido offline e sincroniza automaticamente assim que o aparelho reconecta à internet.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Quais dispositivos são compatíveis?</summary>
+          <p>O Mente Aberta está disponível para iOS (App Store) e Android (Google Play), com a mesma experiência nas duas plataformas.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- banner de chamada -->
+  <section class="section" id="cta">
+    <div class="container">
+      <div class="cta-banner">
+        <div class="cta-banner-copy">
+          <h2>Baixe o app e comece a cuidar da sua mente hoje</h2>
+          <p>Grátis para estudantes na App Store e no Google Play. Planos para clínicas e psicólogos com painel completo de pacientes.</p>
+        </div>
+        <div class="cta-banner-actions">
+          <a href="#" class="btn btn-primary" onclick="openAuth('student','signup');return false;">Baixar para iOS</a>
+          <a href="#" class="btn btn-primary" onclick="openAuth('student','signup');return false;">Baixar para Android</a>
+          <a href="#" class="btn btn-ghost" onclick="openAuth('psych','signup');return false;">Falar com um especialista</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- rodapé -->
+<footer class="site-footer" id="rodape">
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="brand">
+          <span class="brand-mark">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M9 3C6 3 4 5 4 7.5C4 8.3 4.2 9 4.6 9.6C3.6 10.2 3 11.3 3 12.5C3 14.2 4.2 15.6 5.8 15.9C5.9 17.7 7.4 19 9.1 19C9.6 19 10 18.9 10.4 18.7C10.9 20 12.2 21 13.7 21C15.5 21 17 19.7 17.3 18C18.9 17.7 20 16.3 20 14.7C20 13.7 19.6 12.8 18.9 12.2C19.6 11.5 20 10.5 20 9.5C20 7.2 18.1 5.4 15.8 5.5C15.2 4 13.7 3 12 3C10.9 3 9.9 3.4 9 3Z" stroke="white" stroke-width="1.4" stroke-linejoin="round"/>
+            </svg>
+          </span>
+          Mente Aberta
+        </div>
+        <p>Cuidado emocional diário para estudantes, com apoio clínico direto de psicólogos.</p>
+      </div>
+
+      <div class="footer-col">
+        <h5>Produto</h5>
+        <ul>
+          <li><a href="#produtos">Para estudantes</a></li>
+          <li><a href="#psicologos">Para psicólogos</a></li>
+          <li><a href="#recursos-app">Recursos do app</a></li>
+          <li><a href="#como-funciona">Como funciona</a></li>
+          <li><a href="#planos">Planos e preços</a></li>
+          <li><a href="#seguranca">Segurança e privacidade</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5>Empresa</h5>
+        <ul>
+          <li><a href="#">Sobre nós</a></li>
+          <li><a href="#">Carreiras</a></li>
+          <li><a href="#">Imprensa</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5>Suporte</h5>
+        <ul>
+          <li><a href="#faq">Central de ajuda</a></li>
+          <li><a href="#faq">Perguntas frequentes</a></li>
+          <li><a href="#">Emergência</a></li>
+          <li><a href="#rodape">Contato</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <span>© 2026 Mente Aberta. Todos os direitos reservados.</span>
+      <div class="footer-social">
+        <a href="#" aria-label="Instagram">IG</a>
+        <a href="#" aria-label="LinkedIn">IN</a>
+        <a href="#" aria-label="TikTok">TT</a>
+      </div>
+    </div>
+  </div>
+</footer>
+</div><!-- /site-wrapper -->
+
+<!-- LOGIN / CRIAR CONTA -->
+<div class="auth-shell" id="auth-view">
+  <div class="auth-card">
+    <button class="auth-back" onclick="closeAuth()">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M15 18l-6-6 6-6"/></svg>
+      Voltar ao site
+    </button>
+    <div class="auth-brand">
+      <span class="brand-mark">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M9 3C6 3 4 5 4 7.5C4 8.3 4.2 9 4.6 9.6C3.6 10.2 3 11.3 3 12.5C3 14.2 4.2 15.6 5.8 15.9C5.9 17.7 7.4 19 9.1 19C9.6 19 10 18.9 10.4 18.7C10.9 20 12.2 21 13.7 21C15.5 21 17 19.7 17.3 18C18.9 17.7 20 16.3 20 14.7C20 13.7 19.6 12.8 18.9 12.2C19.6 11.5 20 10.5 20 9.5C20 7.2 18.1 5.4 15.8 5.5C15.2 4 13.7 3 12 3C10.9 3 9.9 3.4 9 3Z" stroke="white" stroke-width="1.4" stroke-linejoin="round"/></svg>
+      </span>
+      <span>Mente Aberta</span>
+    </div>
+
+    <div class="auth-role-toggle">
+      <button class="auth-role-btn" id="auth-role-student" onclick="setAuthRole('student')">🎓 Sou estudante</button>
+      <button class="auth-role-btn" id="auth-role-psych" onclick="setAuthRole('psych')">🩺 Sou psicólogo</button>
+    </div>
+
+    <div class="auth-tabs">
+      <div class="auth-tab" id="auth-tab-login" onclick="setAuthMode('login')">Entrar</div>
+      <div class="auth-tab" id="auth-tab-signup" onclick="setAuthMode('signup')">Criar conta</div>
+    </div>
+
+    <form class="auth-form" id="auth-form-login" onsubmit="return doLogin(event)">
+      <input class="auth-field" type="email" placeholder="E-mail" required>
+      <input class="auth-field" type="password" placeholder="Senha" required>
+      <button type="submit" class="btn btn-primary">Entrar</button>
+    </form>
+
+    <form class="auth-form" id="auth-form-signup" onsubmit="return doLogin(event)">
+      <input class="auth-field" type="text" placeholder="Nome completo" required>
+      <input class="auth-field" type="email" placeholder="E-mail" required>
+      <input class="auth-field" type="password" placeholder="Senha" required>
+      <input class="auth-field auth-only-psych" type="text" placeholder="CRP" style="display:none;">
+      <button type="submit" class="btn btn-primary">Criar conta</button>
+    </form>
+
+    <p class="auth-note">Isto é um protótipo — qualquer e-mail e senha entram no app.</p>
+  </div>
+</div>
+
+<!-- APP (área logada) -->
+<div class="app-shell" id="app-view" data-role="student">
+  <input type="checkbox" id="app-menu-check">
+
+  <aside class="app-sidebar">
+    <div class="app-sidebar-brand">
+      <span class="brand-mark" style="width:32px;height:32px;">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M9 3C6 3 4 5 4 7.5C4 8.3 4.2 9 4.6 9.6C3.6 10.2 3 11.3 3 12.5C3 14.2 4.2 15.6 5.8 15.9C5.9 17.7 7.4 19 9.1 19C9.6 19 10 18.9 10.4 18.7C10.9 20 12.2 21 13.7 21C15.5 21 17 19.7 17.3 18C18.9 17.7 20 16.3 20 14.7C20 13.7 19.6 12.8 18.9 12.2C19.6 11.5 20 10.5 20 9.5C20 7.2 18.1 5.4 15.8 5.5C15.2 4 13.7 3 12 3C10.9 3 9.9 3.4 9 3Z" stroke="white" stroke-width="1.4" stroke-linejoin="round"/></svg>
+      </span>
+      <span>Mente Aberta</span>
+    </div>
+    <span class="app-role-pill for-student">Área do estudante</span>
+    <span class="app-role-pill for-psych">Área do psicólogo</span>
+
+    <nav class="app-nav">
+      <!-- Navegação — Estudante -->
+      <div class="role-student">
+        <button class="app-nav-item" data-panel="home" data-title="Início|Como você está hoje?" onclick="appNav(this)">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l9-8 9 8"/><path d="M5 10v10h14V10"/></svg> Início
+        </button>
+        <button class="app-nav-item" data-panel="checkin" data-title="Check-in|Registre seu humor de hoje" onclick="appNav(this)">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M9 10h.01M15 10h.01M8 15c1 1.2 2.4 2 4 2s3-.8 4-2"/></svg> Check-in
+        </button>
+        <button class="app-nav-item" data-panel="diario" data-title="Diário emocional|Sua análise da semana" onclick="window.open('paginas/diario.html','_blank')">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg> Diário
+        </button>
+        <button class="app-nav-item" data-panel="recursos" data-title="Recursos|Ferramentas para o seu bem-estar" onclick="appNav(this)">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-8-4.6-8-11a4.8 4.8 0 018-3.5A4.8 4.8 0 0120 10c0 6.4-8 11-8 11z"/></svg> Recursos
+        </button>
+        <button class="app-nav-item" data-panel="relatorio" data-title="Relatório da semana|Seus dados em gráficos" onclick="appNav(this)">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><rect x="7" y="12" width="3" height="6"/><rect x="12" y="8" width="3" height="10"/><rect x="17" y="5" width="3" height="13"/></svg> Relatórios
+        </button>
+        <button class="app-nav-item new-badge" data-panel="metas" data-title="Metas|Seus objetivos de autocuidado" onclick="appNav(this)">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.5" fill="currentColor"/></svg> Metas
+        </button>
+        <button class="app-nav-item new-badge" data-panel="comunidade" data-title="Comunidade|Um espaço seguro para compartilhar" onclick="appNav(this)">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg> Comunidade
+        </button>
+        <button class="app-nav-item new-badge" data-panel="agenda" data-title="Agenda|Suas sessões com psicólogos" onclick="appNav(this)">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg> Agenda
+        </button>
+        <button class="app-nav-item" data-panel="suporte" data-title="Suporte e ajuda|Estamos aqui por você" onclick="window.open('paginas/suporte.html','_blank')">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 16v-4M12 8h.01"/></svg> Suporte
+        </button>
+      </div>
+      <!-- Navegação — Psicólogo -->
+      <div class="role-psych">
+        <button class="app-nav-item" data-panel="psy-home" data-title="Painel|Visão geral dos seus pacientes" onclick="appNav(this)">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l9-8 9 8"/><path d="M5 10v10h14V10"/></svg> Painel
+        </button>
+        <button class="app-nav-item" data-panel="psy-patients" data-title="Pacientes|Todos os seus pacientes ativos" onclick="appNav(this)">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg> Pacientes
+        </button>
+        <button class="app-nav-item" data-panel="psy-alerts" data-title="Alertas|Pacientes que precisam de atenção" onclick="appNav(this)">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><path d="M12 9v4M12 17h.01"/></svg> Alertas
+        </button>
+        <button class="app-nav-item new-badge" data-panel="psy-agenda" data-title="Agenda|Suas sessões marcadas" onclick="appNav(this)">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg> Agenda
+        </button>
+        <button class="app-nav-item new-badge" data-panel="psy-mensagens" data-title="Mensagens|Converse com seus pacientes" onclick="appNav(this)">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg> Mensagens
+        </button>
+        <button class="app-nav-item" data-panel="psy-relatorios" data-title="Relatórios|Visão geral de todos os pacientes" onclick="appNav(this)">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 14l4-5 3 3 5-7"/></svg> Relatórios
+        </button>
+        <button class="app-nav-item" data-panel="psy-financeiro" data-title="Financeiro|Sessões e pagamentos" onclick="appNav(this)">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="20" height="14" rx="2"/><path d="M2 10h20"/><path d="M6 15h4"/></svg> Financeiro
+        </button>
+        <button class="app-nav-item" data-panel="psy-materiais" data-title="Materiais|Conteúdos para prescrever aos pacientes" onclick="appNav(this)">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg> Materiais
+        </button>
+        <button class="app-nav-item new-badge" data-panel="psy-solicitacoes" data-title="Solicitações|Novos pacientes aguardando aprovação" onclick="appNav(this)">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 8v4l3 3"/></svg> Solicitações
+        </button>
+      </div>
+      <button class="app-nav-item" data-panel="perfil" data-title="Perfil|Suas informações de conta" onclick="appNav(this)">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21a8 8 0 10-16 0"/><circle cx="12" cy="7" r="4"/></svg> Perfil
+      </button>
+    </nav>
+
+    <div class="app-sidebar-footer">
+      <button class="app-nav-item" onclick="logoutApp()">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4"/><path d="M16 17l5-5-5-5"/><path d="M21 12H9"/></svg> Sair
+      </button>
+    </div>
+  </aside>
+
+  <div class="app-content">
+    <header class="app-topbar">
+      <div class="app-topbar-left">
+        <label for="app-menu-check" class="app-menu-toggle" aria-label="Abrir menu"><span></span><span></span><span></span></label>
+        <div>
+          <h2 id="app-topbar-title">Início</h2>
+          <div class="sub" id="app-topbar-sub">Como você está hoje?</div>
+        </div>
+      </div>
+      <button class="app-avatar" onclick="appNav(document.querySelector('[data-panel=perfil]'))">LA</button>
+    </header>
+
+    <main class="app-scroll">
+
+      <!-- área do estudante -->
+
+      <section class="app-panel active" id="panel-home">
+        <div class="app-hero-card">
+          <h2>Olá, Larissa! 👋</h2>
+          <p>Você já fez seu check-in de hoje? Leva menos de 3 minutos.</p>
+        </div>
+        <div class="app-grid-3">
+          <div class="app-stat"><div class="num" id="home-streak" style="color:var(--color-accent-yellow);">🔥 5</div><div class="lbl">Dias seguidos</div></div>
+          <div class="app-stat"><div class="num" id="home-water" style="color:var(--color-primary);">💧 0/8</div><div class="lbl">Copos de água hoje</div></div>
+          <div class="app-stat"><div class="num" id="home-checkins" style="color:var(--color-accent-green);">12</div><div class="lbl">Check-ins no mês</div></div>
+        </div>
+        <div class="app-grid-2">
+          <div class="app-card">
+            <h3>Humor da semana</h3>
+            <div style="display:flex; justify-content:space-around; font-size:1.6rem;">
+              <span>😄</span><span>😐</span><span>😢</span><span>😡</span>
+            </div>
+            <div style="display:flex; justify-content:space-around; margin-top:8px;">
+              <small style="color:var(--text-muted)">40%</small><small style="color:var(--text-muted)">15%</small><small style="color:var(--text-muted)">35%</small><small style="color:var(--text-muted)">10%</small>
+            </div>
+          </div>
+          <div class="app-card">
+            <h3>Evolução da semana</h3>
+            <div class="app-bar-chart">
+              <div class="app-bar" style="height:40%"></div>
+              <div class="app-bar" style="height:65%"></div>
+              <div class="app-bar" style="height:35%"></div>
+              <div class="app-bar accent" style="height:80%"></div>
+              <div class="app-bar" style="height:55%"></div>
+              <div class="app-bar" style="height:90%"></div>
+              <div class="app-bar accent" style="height:70%"></div>
+            </div>
+          </div>
+        </div>
+        <button class="btn btn-primary" style="width:220px;" onclick="appNav(document.querySelector('[data-panel=checkin]'))">Fazer check-in</button>
+      </section>
+
+      <section class="app-panel" id="panel-checkin">
+        <div class="app-card">
+          <h3>Como você está se sentindo?</h3>
+          <div class="app-mood-grid">
+            <div class="app-mood-opt" onclick="selectMood(this)">😄<small>Feliz</small></div>
+            <div class="app-mood-opt" onclick="selectMood(this)">😔<small>Triste</small></div>
+            <div class="app-mood-opt" onclick="selectMood(this)">😰<small>Ansioso</small></div>
+            <div class="app-mood-opt" onclick="selectMood(this)">😠<small>Irritado</small></div>
+            <div class="app-mood-opt" onclick="selectMood(this)">😐<small>Neutro</small></div>
+          </div>
+        </div>
+        <div class="app-grid-2">
+          <div class="app-card">
+            <h3>Intensidade da emoção</h3>
+            <div class="app-intensity-row">
+              <div class="app-intensity-dot" onclick="selectIntensity(this)">1</div>
+              <div class="app-intensity-dot" onclick="selectIntensity(this)">2</div>
+              <div class="app-intensity-dot" onclick="selectIntensity(this)">3</div>
+              <div class="app-intensity-dot" onclick="selectIntensity(this)">4</div>
+              <div class="app-intensity-dot" onclick="selectIntensity(this)">5</div>
+            </div>
+          </div>
+          <div class="app-card">
+            <h3>O que você está sentindo?</h3>
+            <div class="app-chip-grid" id="checkin-emotions">
+              <div class="app-chip" onclick="this.classList.toggle('selected')">Felicidade</div>
+              <div class="app-chip" onclick="this.classList.toggle('selected')">Estresse</div>
+              <div class="app-chip" onclick="this.classList.toggle('selected')">Gratidão</div>
+              <div class="app-chip" onclick="this.classList.toggle('selected')">Solidão</div>
+              <div class="app-chip" onclick="this.classList.toggle('selected')">Tristeza</div>
+              <div class="app-chip" onclick="this.classList.toggle('selected')">Raiva</div>
+              <div class="app-chip" onclick="this.classList.toggle('selected')">Medo</div>
+              <div class="app-chip" onclick="this.classList.toggle('selected')">Motivação</div>
+              <div class="app-chip" onclick="this.classList.toggle('selected')">Outros</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="app-card">
+          <h3>Sintomas físicos e mentais</h3>
+          <div class="app-chip-grid" id="checkin-symptoms">
+            <div class="app-chip" onclick="this.classList.toggle('selected')">Dor de cabeça</div>
+            <div class="app-chip" onclick="this.classList.toggle('selected')">Fadiga</div>
+            <div class="app-chip" onclick="this.classList.toggle('selected')">Tensão muscular</div>
+            <div class="app-chip" onclick="this.classList.toggle('selected')">Insônia</div>
+            <div class="app-chip" onclick="this.classList.toggle('selected')">Falta de apetite</div>
+            <div class="app-chip" onclick="this.classList.toggle('selected')">Compulsão alimentar</div>
+            <div class="app-chip" onclick="this.classList.toggle('selected')">Dificuldade de concentração</div>
+            <div class="app-chip" onclick="this.classList.toggle('selected')">Choro fácil</div>
+            <div class="app-chip" onclick="this.classList.toggle('selected')">Taquicardia</div>
+            <div class="app-chip" onclick="this.classList.toggle('selected')">Tontura</div>
+            <div class="app-chip" onclick="this.classList.toggle('selected')">Nenhum</div>
+          </div>
+        </div>
+
+        <div class="app-grid-2">
+          <div class="app-card">
+            <h3>Sono</h3>
+            <div class="stepper">
+              <button class="stepper-btn" onclick="stepSleep(-1)">−</button>
+              <div class="stepper-val" id="sleep-hours-val">7h</div>
+              <button class="stepper-btn" onclick="stepSleep(1)">+</button>
+            </div>
+            <div class="stepper-sub">Horas dormidas esta noite</div>
+            <div class="scale-row" id="sleep-quality-row" style="margin-top:14px;">
+              <div class="scale-opt" onclick="selectScale(this,'sleep-quality-row')">😴<small>Péssima</small></div>
+              <div class="scale-opt" onclick="selectScale(this,'sleep-quality-row')">😕<small>Ruim</small></div>
+              <div class="scale-opt" onclick="selectScale(this,'sleep-quality-row')">😐<small>Ok</small></div>
+              <div class="scale-opt" onclick="selectScale(this,'sleep-quality-row')">🙂<small>Boa</small></div>
+              <div class="scale-opt" onclick="selectScale(this,'sleep-quality-row')">😃<small>Ótima</small></div>
+            </div>
+          </div>
+          <div class="app-card">
+            <h3>Nível de energia</h3>
+            <div class="scale-row" id="energy-row" style="margin-top:10px;">
+              <div class="scale-opt" onclick="selectScale(this,'energy-row')">🪫<small>Muito baixa</small></div>
+              <div class="scale-opt" onclick="selectScale(this,'energy-row')">🔋<small>Baixa</small></div>
+              <div class="scale-opt" onclick="selectScale(this,'energy-row')">⚡<small>Média</small></div>
+              <div class="scale-opt" onclick="selectScale(this,'energy-row')">🔥<small>Alta</small></div>
+              <div class="scale-opt" onclick="selectScale(this,'energy-row')">🚀<small>Altíssima</small></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="app-grid-2">
+          <div class="app-card">
+            <h3>Água 💧</h3>
+            <div class="stepper">
+              <button class="stepper-btn" onclick="stepWater(-1)">−</button>
+              <div class="stepper-val" id="water-val">0</div>
+              <button class="stepper-btn" onclick="stepWater(1)">+</button>
+            </div>
+            <div class="stepper-sub">Copos de 250ml (meta: 8)</div>
+            <div class="water-glasses" id="water-glasses"></div>
+          </div>
+          <div class="app-card">
+            <h3>Atividade física</h3>
+            <div class="app-chip-grid" id="checkin-activity">
+              <div class="app-chip" onclick="selectSingleChip(this,'checkin-activity')">Nenhuma</div>
+              <div class="app-chip" onclick="selectSingleChip(this,'checkin-activity')">Caminhada</div>
+              <div class="app-chip" onclick="selectSingleChip(this,'checkin-activity')">Academia</div>
+              <div class="app-chip" onclick="selectSingleChip(this,'checkin-activity')">Yoga</div>
+              <div class="app-chip" onclick="selectSingleChip(this,'checkin-activity')">Corrida</div>
+              <div class="app-chip" onclick="selectSingleChip(this,'checkin-activity')">Esporte coletivo</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="app-grid-2">
+          <div class="app-card">
+            <h3>Interação social</h3>
+            <div class="app-chip-grid" id="checkin-social">
+              <div class="app-chip" onclick="selectSingleChip(this,'checkin-social')">Sozinho(a) o dia todo</div>
+              <div class="app-chip" onclick="selectSingleChip(this,'checkin-social')">Com poucas pessoas</div>
+              <div class="app-chip" onclick="selectSingleChip(this,'checkin-social')">Bastante gente</div>
+              <div class="app-chip" onclick="selectSingleChip(this,'checkin-social')">Evitei contato</div>
+            </div>
+          </div>
+          <div class="app-card">
+            <h3>Medicação / suplementos</h3>
+            <div class="app-chip-grid" id="checkin-meds">
+              <div class="app-chip" onclick="selectSingleChip(this,'checkin-meds')">Tomei corretamente</div>
+              <div class="app-chip" onclick="selectSingleChip(this,'checkin-meds')">Esqueci uma dose</div>
+              <div class="app-chip" onclick="selectSingleChip(this,'checkin-meds')">Não uso medicação</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="app-card">
+          <h3>Gatilhos de estresse hoje</h3>
+          <div class="app-chip-grid" id="checkin-triggers">
+            <div class="app-chip" onclick="this.classList.toggle('selected')">Estudos / provas</div>
+            <div class="app-chip" onclick="this.classList.toggle('selected')">Trabalho</div>
+            <div class="app-chip" onclick="this.classList.toggle('selected')">Família</div>
+            <div class="app-chip" onclick="this.classList.toggle('selected')">Relacionamento</div>
+            <div class="app-chip" onclick="this.classList.toggle('selected')">Financeiro</div>
+            <div class="app-chip" onclick="this.classList.toggle('selected')">Saúde</div>
+            <div class="app-chip" onclick="this.classList.toggle('selected')">Redes sociais</div>
+            <div class="app-chip" onclick="this.classList.toggle('selected')">Nenhum</div>
+          </div>
+        </div>
+
+        <div class="app-card">
+          <h3>Como foi o seu dia?</h3>
+          <textarea class="app-textarea" id="checkin-note" rows="3" placeholder="Escreva aqui..."></textarea>
+        </div>
+        <button class="btn btn-primary" style="width:220px;" onclick="saveCheckin()">Registrar check-in</button>
+      </section>
+
+      <section class="app-panel" id="panel-diario">
+        <a href="paginas/diario.html" target="_blank" class="app-back-link" style="float:right;">Abrir versão completa ↗</a>
+        <div class="app-grid-2">
+          <div class="app-card">
+            <h3>Análise da semana</h3>
+            <div class="app-pie"></div>
+            <div class="app-legend">
+              <div class="app-legend-row"><span class="app-legend-dot" style="background:var(--color-primary);"></span>Feliz — 60%</div>
+              <div class="app-legend-row"><span class="app-legend-dot" style="background:var(--color-accent-green);"></span>Ansioso — 20%</div>
+              <div class="app-legend-row"><span class="app-legend-dot" style="background:var(--color-accent-red);"></span>Triste — 20%</div>
+            </div>
+          </div>
+          <div class="app-card">
+            <h3>Observação</h3>
+            <p>Você apresentou aumento de ansiedade nos últimos 3 dias.</p>
+            <span class="app-back-link" style="margin-top:14px;" onclick="appNav(document.querySelector('[data-panel=relatorio]'))">Ver recomendações →</span>
+          </div>
+        </div>
+        <div class="app-card">
+          <h3>Nova entrada no diário</h3>
+          <textarea class="app-textarea" id="diario-note" rows="3" placeholder="O que você quer registrar hoje?"></textarea>
+          <button class="btn btn-primary btn-sm" style="margin-top:12px;" onclick="addDiaryEntry()">Salvar entrada</button>
+        </div>
+        <div class="app-card">
+          <h3>Suas entradas</h3>
+          <div class="app-list" id="diario-entries-list">
+            <div class="app-list-item"><div class="app-list-avatar" style="background:var(--color-secondary);">😄</div><div><div style="font-weight:600; font-size:0.9rem;">Hoje foi um dia mais leve</div><div style="font-size:0.78rem; color:var(--text-muted);">Ontem</div></div></div>
+            <div class="app-list-item"><div class="app-list-avatar" style="background:var(--color-accent-yellow);">😰</div><div><div style="font-weight:600; font-size:0.9rem;">Semana de provas, ansiedade alta</div><div style="font-size:0.78rem; color:var(--text-muted);">3 dias atrás</div></div></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="app-panel" id="panel-recursos">
+        <div class="app-card">
+          <h3>Recursos para você</h3>
+          <div class="app-list">
+            <div class="app-list-item" onclick="window.open('paginas/exercicios.html','_blank')"><div class="app-list-avatar" style="background:#FBE4E5;">🔥</div><div><div style="font-weight:600; font-size:0.9rem;">Exercícios</div><div style="font-size:0.8rem; color:var(--text-muted);">Respiração guiada e alongamento</div></div></div>
+            <div class="app-list-item" onclick="window.open('paginas/meditacao.html','_blank')"><div class="app-list-avatar" style="background:#EFE7FB;">🧘‍♀️</div><div><div style="font-weight:600; font-size:0.9rem;">Meditação guiada</div><div style="font-size:0.8rem; color:var(--text-muted);">Sessões com temporizador</div></div></div>
+            <div class="app-list-item" onclick="window.open('paginas/diario.html','_blank')"><div class="app-list-avatar" style="background:#E4E9FB;">📔</div><div><div style="font-weight:600; font-size:0.9rem;">Diário emocional</div><div style="font-size:0.8rem; color:var(--text-muted);">Escreva seus sentimentos</div></div></div>
+            <div class="app-list-item" onclick="window.open('paginas/tecnicas.html','_blank')"><div class="app-list-avatar" style="background:var(--color-bg-soft);">🧘</div><div><div style="font-weight:600; font-size:0.9rem;">Técnicas</div><div style="font-size:0.8rem; color:var(--text-muted);">Relaxamento e foco, com prática guiada</div></div></div>
+            <div class="app-list-item" onclick="window.open('paginas/biblioteca.html','_blank')"><div class="app-list-avatar" style="background:#FDEBD0;">📚</div><div><div style="font-weight:600; font-size:0.9rem;">Biblioteca</div><div style="font-size:0.8rem; color:var(--text-muted);">Artigos sobre saúde mental</div></div></div>
+            <div class="app-list-item" onclick="window.open('paginas/plano.html','_blank')"><div class="app-list-avatar" style="background:#E4F7EC;">📋</div><div><div style="font-weight:600; font-size:0.9rem;">Plano</div><div style="font-size:0.8rem; color:var(--text-muted);">Plano de autocuidado</div></div></div>
+            <div class="app-list-item" onclick="window.open('paginas/suporte.html','_blank')"><div class="app-list-avatar" style="background:var(--color-accent-yellow);">🆘</div><div><div style="font-weight:600; font-size:0.9rem;">Buscar ajuda</div><div style="font-size:0.8rem; color:var(--text-muted);">Falar com psicólogo</div></div></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="app-panel" id="panel-exercicios">
+        <span class="app-back-link" onclick="appNav(document.querySelector('[data-panel=recursos]'))">← Voltar para recursos</span>
+        <a href="paginas/exercicios.html" target="_blank" class="app-back-link" style="float:right;">Abrir versão completa ↗</a>
+        <div class="app-card" style="text-align:center;">
+          <h3>Respiração guiada 4-7-8</h3>
+          <p>Inspire em 4 segundos, segure por 7, solte em 8. Toque em começar e siga o círculo.</p>
+          <div class="breath-circle" id="breath-circle">Pronto</div>
+          <div style="display:flex; gap:12px; justify-content:center; margin-top:16px;">
+            <button class="btn btn-primary btn-sm" onclick="startBreathing()">Começar</button>
+            <button class="btn btn-ghost btn-sm" onclick="stopBreathing()">Parar</button>
+          </div>
+          <p id="breath-count" style="margin-top:10px; font-family:var(--font-mono); font-size:0.8rem;"></p>
+        </div>
+        <div class="app-card">
+          <h3>Alongamento guiado</h3>
+          <p>5 minutos de alongamento leve para pescoço, ombros e costas.</p>
+          <button class="btn btn-primary btn-sm" id="stretch-btn" style="margin-top:8px;" onclick="toggleStretch()">Começar alongamento (5 min)</button>
+          <div class="resource-mini-player" id="stretch-player">
+            <div class="timer-ring" id="stretch-ring" style="--pct:0;"><span id="stretch-time">5:00</span></div>
+            <p style="text-align:center; font-size:0.82rem; color:var(--text-muted);" id="stretch-step">Alongue o pescoço lentamente para os dois lados</p>
+          </div>
+        </div>
+        <div class="app-card player-card">
+          <h3>Áudio de relaxamento</h3>
+          <p>10 minutos de narração guiada para acalmar a mente.</p>
+          <div class="player-visualizer" id="audio-visualizer">
+            <div class="player-bar"></div><div class="player-bar"></div><div class="player-bar"></div><div class="player-bar"></div><div class="player-bar"></div><div class="player-bar"></div><div class="player-bar"></div>
+          </div>
+          <button class="btn btn-primary btn-sm" id="audio-btn" onclick="toggleAudio()">▶ Reproduzir</button>
+        </div>
+      </section>
+
+      <section class="app-panel" id="panel-meditacao">
+        <span class="app-back-link" onclick="appNav(document.querySelector('[data-panel=recursos]'))">← Voltar para recursos</span>
+        <a href="paginas/meditacao.html" target="_blank" class="app-back-link" style="float:right;">Abrir versão completa ↗</a>
+        <div class="app-card" style="text-align:center;">
+          <h3>Meditação guiada</h3>
+          <p>Escolha a duração da sua sessão de meditação.</p>
+          <div class="track-chip-grid" id="meditation-duration">
+            <div class="app-chip selected" onclick="selectSingleChip(this,'meditation-duration'); setMeditationDuration(5)">5 min</div>
+            <div class="app-chip" onclick="selectSingleChip(this,'meditation-duration'); setMeditationDuration(10)">10 min</div>
+            <div class="app-chip" onclick="selectSingleChip(this,'meditation-duration'); setMeditationDuration(15)">15 min</div>
+          </div>
+          <div class="timer-ring" id="meditation-ring" style="--pct:0;"><span id="meditation-time">5:00</span></div>
+          <div style="display:flex; gap:12px; justify-content:center;">
+            <button class="btn btn-primary btn-sm" onclick="startMeditation()">Iniciar</button>
+            <button class="btn btn-ghost btn-sm" onclick="pauseMeditation()">Pausar</button>
+            <button class="btn btn-ghost btn-sm" onclick="resetMeditation()">Reiniciar</button>
+          </div>
+        </div>
+        <div class="app-card">
+          <h3>Sessões concluídas</h3>
+          <div class="app-list" id="meditation-log">
+            <div class="app-list-item"><div class="app-list-avatar" style="background:#EFE7FB;">🧘‍♀️</div><div><div style="font-weight:600; font-size:0.9rem;">Meditação de 10 min</div><div style="font-size:0.78rem; color:var(--text-muted);">Ontem</div></div></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="app-panel" id="panel-biblioteca">
+        <span class="app-back-link" onclick="appNav(document.querySelector('[data-panel=recursos]'))">← Voltar para recursos</span>
+        <a href="paginas/biblioteca.html" target="_blank" class="app-back-link" style="float:right;">Abrir versão completa ↗</a>
+        <div class="app-card">
+          <h3>Artigos sobre saúde mental</h3>
+          <div class="app-list" id="library-list">
+            <div class="app-list-item article-card" onclick="openArticle('ansiedade')"><div class="app-list-avatar" style="background:#FBE4E5;">😰</div><div><div style="font-weight:600; font-size:0.9rem;">Entendendo a ansiedade</div><div style="font-size:0.78rem; color:var(--text-muted);">Leitura de 3 min</div></div></div>
+            <div class="app-list-item article-card" onclick="openArticle('sono')"><div class="app-list-avatar" style="background:#DCEFFB;">😴</div><div><div style="font-weight:600; font-size:0.9rem;">Como dormir melhor na faculdade</div><div style="font-size:0.78rem; color:var(--text-muted);">Leitura de 4 min</div></div></div>
+            <div class="app-list-item article-card" onclick="openArticle('procrastinacao')"><div class="app-list-avatar" style="background:#FDEBD0;">⏳</div><div><div style="font-weight:600; font-size:0.9rem;">Procrastinação e ansiedade acadêmica</div><div style="font-size:0.78rem; color:var(--text-muted);">Leitura de 3 min</div></div></div>
+            <div class="app-list-item article-card" onclick="openArticle('social')"><div class="app-list-avatar" style="background:#E4F7EC;">🤝</div><div><div style="font-weight:600; font-size:0.9rem;">Lidando com a solidão universitária</div><div style="font-size:0.78rem; color:var(--text-muted);">Leitura de 4 min</div></div></div>
+            <div class="app-list-item article-card" onclick="openArticle('terapia')"><div class="app-list-avatar" style="background:#EFE7FB;">💬</div><div><div style="font-weight:600; font-size:0.9rem;">Quando buscar terapia?</div><div style="font-size:0.78rem; color:var(--text-muted);">Leitura de 3 min</div></div></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="app-panel" id="panel-tecnicas">
+        <span class="app-back-link" onclick="appNav(document.querySelector('[data-panel=recursos]'))">← Voltar para recursos</span>
+        <a href="paginas/tecnicas.html" target="_blank" class="app-back-link" style="float:right;">Abrir versão completa ↗</a>
+        <div class="app-card">
+          <h3>Técnicas de relaxamento e foco</h3>
+          <div class="app-list">
+            <div class="app-list-item" data-tech="Respiração diafragmática" onclick="toggleDetail(this)"><div class="app-list-avatar" style="background:#E4E9FB;">🌬️</div><div style="flex:1;"><div style="font-weight:600; font-size:0.9rem;">Respiração diafragmática</div><div class="detail" style="font-size:0.8rem; color:var(--text-muted); display:none; margin-top:6px;">Respire profundamente pelo abdômen, sentindo a barriga expandir. Repita por 2 minutos sempre que sentir ansiedade subir.<br><button class="btn btn-primary btn-sm" style="margin-top:10px;" onclick="event.stopPropagation(); practiceTechnique(this,'Respiração diafragmática',120)">Praticar agora (2 min)</button></div></div></div>
+            <div class="app-list-item" data-tech="Grounding" onclick="toggleDetail(this)"><div class="app-list-avatar" style="background:#FBE4E5;">🧠</div><div style="flex:1;"><div style="font-weight:600; font-size:0.9rem;">Grounding 5-4-3-2-1</div><div class="detail" style="font-size:0.8rem; color:var(--text-muted); display:none; margin-top:6px;">Nomeie 5 coisas que você vê, 4 que sente, 3 que ouve, 2 que cheira e 1 que saboreia — ajuda a voltar ao presente.<br><button class="btn btn-primary btn-sm" style="margin-top:10px;" onclick="event.stopPropagation(); practiceTechnique(this,'Grounding 5-4-3-2-1',90)">Praticar agora (1,5 min)</button></div></div></div>
+            <div class="app-list-item" data-tech="Escrita" onclick="toggleDetail(this)"><div class="app-list-avatar" style="background:#E4F7EC;">✍️</div><div style="flex:1;"><div style="font-weight:600; font-size:0.9rem;">Escrita expressiva</div><div class="detail" style="font-size:0.8rem; color:var(--text-muted); display:none; margin-top:6px;">Escreva livremente por 5 minutos sobre o que sente, sem se preocupar com forma ou gramática.<br><button class="btn btn-primary btn-sm" style="margin-top:10px;" onclick="event.stopPropagation(); window.open('paginas/diario.html','_blank')">Abrir diário</button></div></div></div>
+            <div class="app-list-item" data-tech="Pomodoro" onclick="toggleDetail(this)"><div class="app-list-avatar" style="background:var(--color-bg-soft);">🎯</div><div style="flex:1;"><div style="font-weight:600; font-size:0.9rem;">Técnica Pomodoro</div><div class="detail" style="font-size:0.8rem; color:var(--text-muted); display:none; margin-top:6px;">25 minutos de foco total, seguidos de 5 minutos de pausa. Ótima para reduzir procrastinação.<br><button class="btn btn-primary btn-sm" style="margin-top:10px;" onclick="event.stopPropagation(); practiceTechnique(this,'Pomodoro',1500)">Iniciar Pomodoro (25 min)</button></div></div></div>
+          </div>
+          <div class="resource-mini-player" id="technique-player" style="margin-top:16px;">
+            <div class="timer-ring" id="technique-ring" style="--pct:0;"><span id="technique-time">0:00</span></div>
+            <p style="text-align:center; font-size:0.82rem; color:var(--text-muted);" id="technique-label"></p>
+            <div style="text-align:center;"><button class="btn btn-ghost btn-sm" onclick="stopTechnique()">Parar prática</button></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="app-panel" id="panel-plano">
+        <span class="app-back-link" onclick="appNav(document.querySelector('[data-panel=recursos]'))">← Voltar para recursos</span>
+        <a href="paginas/plano.html" target="_blank" class="app-back-link" style="float:right;">Abrir versão completa ↗</a>
+        <div class="app-card">
+          <h3>Seu plano de autocuidado</h3>
+          <div class="app-progress-row"><span>Progresso</span><div class="app-progress-track"><div class="app-progress-fill" id="plano-progress" style="width:40%; background:var(--color-accent-green);"></div></div><b id="plano-progress-txt">40%</b></div>
+          <div class="app-list" id="plano-list" style="margin-top:10px;">
+            <div class="goal-item"><div class="goal-check done" onclick="togglePlanItem(this)">✓</div><span>Dormir 7h por noite</span></div>
+            <div class="goal-item"><div class="goal-check done" onclick="togglePlanItem(this)">✓</div><span>Beber 2L de água</span></div>
+            <div class="goal-item"><div class="goal-check" onclick="togglePlanItem(this)"></div><span>Fazer 1 check-in diário</span></div>
+            <div class="goal-item"><div class="goal-check" onclick="togglePlanItem(this)"></div><span>Praticar respiração guiada</span></div>
+            <div class="goal-item"><div class="goal-check" onclick="togglePlanItem(this)"></div><span>Conversar com alguém de confiança</span></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="app-panel" id="panel-metas">
+        <div class="app-card">
+          <h3>Suas metas de bem-estar</h3>
+          <div class="app-list" id="metas-list">
+            <div class="goal-item"><div class="goal-check" onclick="toggleGoal(this)"></div><span>Fazer check-in todos os dias desta semana</span></div>
+            <div class="goal-item"><div class="goal-check done" onclick="toggleGoal(this)">✓</div><span>Praticar respiração guiada 3x</span></div>
+            <div class="goal-item"><div class="goal-check" onclick="toggleGoal(this)"></div><span>Reduzir tempo de tela antes de dormir</span></div>
+          </div>
+          <div style="display:flex; gap:10px; margin-top:14px;">
+            <input class="auth-field" id="nova-meta-input" placeholder="Adicionar nova meta..." style="flex:1;">
+            <button class="btn btn-primary btn-sm" onclick="addGoal()">Adicionar</button>
+          </div>
+        </div>
+        <div class="app-card">
+          <h3>Conquistas</h3>
+          <div class="app-grid-3">
+            <div class="app-stat"><div class="num" style="color:var(--color-accent-yellow);">🔥 5</div><div class="lbl">Dias seguidos</div></div>
+            <div class="app-stat"><div class="num" style="color:var(--color-accent-green);">12</div><div class="lbl">Check-ins no mês</div></div>
+            <div class="app-stat"><div class="num" style="color:var(--color-primary);">3</div><div class="lbl">Metas concluídas</div></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="app-panel" id="panel-comunidade">
+        <div class="app-card">
+          <h3>Compartilhar com a comunidade</h3>
+          <textarea class="app-textarea" id="post-text" rows="2" placeholder="Como você está se sentindo hoje? (anônimo)"></textarea>
+          <button class="btn btn-primary btn-sm" style="margin-top:12px;" onclick="addPost()">Publicar</button>
+        </div>
+        <div class="app-card">
+          <h3>Mural da turma</h3>
+          <div id="posts-list">
+            <div class="post-card">
+              <div class="post-head"><div class="app-list-avatar" style="width:30px;height:30px;font-size:0.7rem;background:var(--color-secondary);">A</div><b>Anônimo</b><span>2h atrás</span></div>
+              <p>Hoje consegui fazer meu check-in mesmo num dia difícil. Pequenos passos contam 💛</p>
+              <div class="post-actions"><span class="post-like" onclick="toggleLike(this)">👍 <span class="like-count">14</span></span><span style="font-size:0.82rem; color:var(--text-muted);">💬 3 comentários</span></div>
+            </div>
+            <div class="post-card">
+              <div class="post-head"><div class="app-list-avatar" style="width:30px;height:30px;font-size:0.7rem;background:var(--color-accent-yellow);">A</div><b>Anônimo</b><span>5h atrás</span></div>
+              <p>Alguém mais sentindo ansiedade com a semana de provas chegando? Como vocês estão lidando?</p>
+              <div class="post-actions"><span class="post-like" onclick="toggleLike(this)">👍 <span class="like-count">9</span></span><span style="font-size:0.82rem; color:var(--text-muted);">💬 7 comentários</span></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="app-panel" id="panel-agenda">
+        <div class="app-card">
+          <h3>Próximas sessões</h3>
+          <div id="agenda-list">
+            <div class="session-item"><div><b style="font-size:0.9rem;">Dra. Camila Torres</b><div style="font-size:0.78rem; color:var(--text-muted);">Sessão de acompanhamento</div></div><span class="session-time">Qui, 14h</span></div>
+            <div class="session-item"><div><b style="font-size:0.9rem;">Dr. Renato Farias</b><div style="font-size:0.78rem; color:var(--text-muted);">Primeira consulta</div></div><span class="session-time">Seg, 10h30</span></div>
+          </div>
+        </div>
+        <div class="app-card">
+          <h3>Agendar nova sessão</h3>
+          <div class="app-list">
+            <div class="app-list-item" onclick="bookSession('Dra. Camila Torres')"><div class="app-list-avatar" style="background:var(--color-secondary);">CT</div><div>Dra. Camila Torres — Ansiedade e estresse</div></div>
+            <div class="app-list-item" onclick="bookSession('Dr. Renato Farias')"><div class="app-list-avatar" style="background:var(--color-primary);">RF</div><div>Dr. Renato Farias — Terapia cognitivo-comportamental</div></div>
+            <div class="app-list-item" onclick="bookSession('Dra. Juliana Melo')"><div class="app-list-avatar" style="background:var(--color-accent-red);">JM</div><div>Dra. Juliana Melo — Suporte emocional geral</div></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="app-panel" id="panel-relatorio">
+        <div class="app-grid-2">
+          <div class="app-card">
+            <h3>Relatório da semana</h3>
+            <div class="app-bar-chart" id="relatorio-mood-chart">
+              <div class="app-bar" style="height:30%"></div>
+              <div class="app-bar" style="height:55%"></div>
+              <div class="app-bar" style="height:40%"></div>
+              <div class="app-bar accent" style="height:85%"></div>
+              <div class="app-bar" style="height:60%"></div>
+              <div class="app-bar" style="height:70%"></div>
+              <div class="app-bar accent" style="height:50%"></div>
+            </div>
+          </div>
+          <div class="app-card">
+            <h3>Emoções predominantes</h3>
+            <div class="app-progress-row"><span>Ansiedade</span><div class="app-progress-track"><div class="app-progress-fill" style="width:40%; background:var(--color-accent-red);"></div></div><b>40%</b></div>
+            <div class="app-progress-row"><span>Felicidade</span><div class="app-progress-track"><div class="app-progress-fill" style="width:30%; background:var(--color-accent-green);"></div></div><b>30%</b></div>
+            <div class="app-progress-row"><span>Estresse</span><div class="app-progress-track"><div class="app-progress-fill" style="width:20%; background:var(--color-accent-yellow);"></div></div><b>20%</b></div>
+            <div class="app-progress-row"><span>Tristeza</span><div class="app-progress-track"><div class="app-progress-fill" style="width:10%; background:var(--color-secondary);"></div></div><b>10%</b></div>
+          </div>
+        </div>
+        <div class="app-grid-2">
+          <div class="app-card">
+            <h3>Sono médio</h3>
+            <div class="app-bar-chart" id="relatorio-sleep-chart">
+              <div class="app-bar" style="height:70%"></div>
+              <div class="app-bar" style="height:55%"></div>
+              <div class="app-bar" style="height:80%"></div>
+              <div class="app-bar accent" style="height:40%"></div>
+              <div class="app-bar" style="height:65%"></div>
+              <div class="app-bar" style="height:75%"></div>
+              <div class="app-bar accent" style="height:60%"></div>
+            </div>
+          </div>
+          <div class="app-card">
+            <h3>Hidratação e energia</h3>
+            <div class="app-progress-row"><span>Água (média)</span><div class="app-progress-track"><div class="app-progress-fill" id="relatorio-water-fill" style="width:65%; background:var(--color-primary);"></div></div><b id="relatorio-water-txt">5,2/8</b></div>
+            <div class="app-progress-row"><span>Energia (média)</span><div class="app-progress-track"><div class="app-progress-fill" id="relatorio-energy-fill" style="width:55%; background:var(--color-accent-yellow);"></div></div><b id="relatorio-energy-txt">Média</b></div>
+          </div>
+        </div>
+        <div class="app-card">
+          <h3>Feedback</h3>
+          <p>Você demonstrou melhora em relação à semana passada. Continue com o check-in diário!</p>
+          <span class="app-back-link" style="margin-top:12px;" onclick="appNav(document.querySelector('[data-panel=historico]'))">Ver histórico completo de check-ins →</span>
+        </div>
+        <button class="btn btn-ghost" style="width:220px;" onclick="toast('Relatório baixado em PDF','success')">Baixar relatório (PDF)</button>
+      </section>
+
+      <section class="app-panel" id="panel-historico">
+        <span class="app-back-link" onclick="appNav(document.querySelector('[data-panel=relatorio]'))">← Voltar ao relatório</span>
+        <div class="app-card">
+          <h3>Histórico completo de check-ins</h3>
+          <div class="app-list" id="historico-list">
+            <div class="app-list-item"><div class="app-list-avatar" style="background:var(--color-bg-soft);">📭</div><div><div style="font-weight:600; font-size:0.9rem;">Nenhum check-in registrado ainda</div><div style="font-size:0.78rem; color:var(--text-muted);">Faça seu primeiro check-in para começar seu histórico</div></div></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="app-panel" id="panel-suporte">
+        <a href="paginas/suporte.html" target="_blank" class="app-back-link" style="float:right;">Abrir versão completa ↗</a>
+        <div class="app-emergency" onclick="openEmergency()">
+          <div style="font-size:1.6rem;">🆘</div>
+          <div><div style="font-weight:700; color:var(--color-accent-red);">Emergência</div><div style="font-size:0.85rem; color:var(--text-muted);">Contato de emergência imediato</div></div>
+        </div>
+        <div class="app-card">
+          <div class="app-list">
+            <div class="app-list-item" onclick="openUniSupport()"><div class="app-list-avatar" style="background:var(--color-bg-soft);">🏫</div><div><div style="font-weight:600; font-size:0.9rem;">Apoio universitário</div><div style="font-size:0.8rem; color:var(--text-muted);">Recursos da sua faculdade</div></div></div>
+            <div class="app-list-item" onclick="openShare()"><div class="app-list-avatar" style="background:#E4E9FB;">📤</div><div><div style="font-weight:600; font-size:0.9rem;">Compartilhar</div><div style="font-size:0.8rem; color:var(--text-muted);">Compartilhar com responsável</div></div></div>
+            <div class="app-list-item" onclick="appNav(document.querySelector('[data-panel=agenda]'))"><div class="app-list-avatar" style="background:#E4F7EC;">💬</div><div><div style="font-weight:600; font-size:0.9rem;">Falar com especialista</div><div style="font-size:0.8rem; color:var(--text-muted);">Agendar sessão</div></div></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- área do psicólogo -->
+
+      <section class="app-panel" id="panel-psy-home">
+        <div class="app-grid-3">
+          <div class="app-stat"><div class="num" id="stat-pacientes-ativos" style="color:var(--color-accent-green);">24</div><div class="lbl">Pacientes ativos</div></div>
+          <div class="app-stat"><div class="num" style="color:var(--color-accent-red);">5</div><div class="lbl">Alertas ativos</div></div>
+          <div class="app-stat"><div class="num" style="color:var(--color-accent-yellow);">12</div><div class="lbl">Sessões hoje</div></div>
+        </div>
+        <div class="app-card">
+          <h3>Pacientes recentes</h3>
+          <div class="app-list">
+            <div class="app-list-item" onclick="openPatient('Laura Alves','LA','var(--color-secondary)')"><div class="app-list-avatar" style="background:var(--color-secondary);">LA</div><div>Laura Alves</div></div>
+            <div class="app-list-item" onclick="openPatient('Paulo Égidio','PE','var(--color-accent-yellow)')"><div class="app-list-avatar" style="background:var(--color-accent-yellow);">PE</div><div>Paulo Égidio</div></div>
+            <div class="app-list-item" onclick="openPatient('Ana Clara','AC','var(--color-accent-green)')"><div class="app-list-avatar" style="background:var(--color-accent-green);">AC</div><div>Ana Clara</div></div>
+          </div>
+          <span class="app-back-link" style="margin-top:10px;" onclick="appNav(document.querySelector('[data-panel=psy-patients]'))">Ver todos →</span>
+        </div>
+      </section>
+
+      <section class="app-panel" id="panel-psy-patients">
+        <div class="app-card">
+          <h3>Meus pacientes</h3>
+          <input class="auth-field" id="patient-search" placeholder="🔍 Buscar paciente..." style="margin-bottom:12px;" oninput="filterPatients(this.value)">
+          <div class="app-list" id="patients-full-list">
+            <div class="app-list-item" onclick="openPatient('Laura Alves','LA','var(--color-secondary)')"><div class="app-list-avatar" style="background:var(--color-secondary);">LA</div><div>Laura Alves</div></div>
+            <div class="app-list-item" onclick="openPatient('Paulo Égidio','PE','var(--color-accent-yellow)')"><div class="app-list-avatar" style="background:var(--color-accent-yellow);">PE</div><div>Paulo Égidio</div></div>
+            <div class="app-list-item" onclick="openPatient('Ana Clara','AC','var(--color-accent-green)')"><div class="app-list-avatar" style="background:var(--color-accent-green);">AC</div><div>Ana Clara</div></div>
+            <div class="app-list-item" onclick="openPatient('Lucas Bueno','LB','var(--color-primary)')"><div class="app-list-avatar" style="background:var(--color-primary);">LB</div><div>Lucas Bueno</div></div>
+            <div class="app-list-item" onclick="openPatient('Thaís Nunes','TN','var(--color-accent-red)')"><div class="app-list-avatar" style="background:var(--color-accent-red);">TN</div><div>Thaís Nunes</div></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="app-panel" id="panel-psy-alerts">
+        <div class="app-emergency" onclick="openPatient('Laura Alves','LA','var(--color-secondary)')">
+          <div style="font-size:1.3rem;">🔴</div>
+          <div><div style="font-weight:700; font-size:0.9rem;">Laura Alves</div><div style="font-size:0.82rem; color:var(--text-muted);">Ansiedade elevada há 7 dias</div></div>
+        </div>
+        <div class="app-emergency" onclick="openPatient('Vitor Rodrigues','VR','var(--color-primary)')">
+          <div style="font-size:1.3rem;">🔴</div>
+          <div><div style="font-weight:700; font-size:0.9rem;">Vitor Rodrigues</div><div style="font-size:0.82rem; color:var(--text-muted);">Queda brusca de humor há 3 dias</div></div>
+        </div>
+        <div class="app-emergency" onclick="openPatient('Paulo Égidio','PE','var(--color-accent-yellow)')">
+          <div style="font-size:1.3rem;">🔴</div>
+          <div><div style="font-weight:700; font-size:0.9rem;">Paulo Égidio</div><div style="font-size:0.82rem; color:var(--text-muted);">Estresse elevado há 5 dias</div></div>
+        </div>
+      </section>
+
+      <section class="app-panel" id="panel-psy-patient">
+        <span class="app-back-link" onclick="appNav(document.querySelector('[data-panel=psy-patients]'))">← Voltar para pacientes</span>
+        <div class="app-grid-2">
+          <div class="app-card">
+            <h3 id="patient-name">Paciente</h3>
+            <p>Curso: Psicologia<br>Faculdade: UFR</p>
+          </div>
+          <div class="app-card">
+            <h3>Emoções recentes</h3>
+            <div class="app-chip-grid">
+              <div class="app-chip selected">Ansiedade</div>
+              <div class="app-chip selected">Solidão</div>
+            </div>
+          </div>
+        </div>
+        <div class="app-card">
+          <h3>Histórico emocional</h3>
+          <div class="app-bar-chart">
+            <div class="app-bar" style="height:30%"></div>
+            <div class="app-bar" style="height:70%"></div>
+            <div class="app-bar" style="height:45%"></div>
+            <div class="app-bar accent" style="height:85%"></div>
+            <div class="app-bar" style="height:35%"></div>
+            <div class="app-bar" style="height:60%"></div>
+          </div>
+        </div>
+        <div class="app-grid-2">
+          <div class="app-card">
+            <h3>Sono e energia</h3>
+            <div class="app-progress-row"><span>Sono médio</span><div class="app-progress-track"><div class="app-progress-fill" style="width:55%; background:var(--color-primary);"></div></div><b>5,5h</b></div>
+            <div class="app-progress-row"><span>Energia</span><div class="app-progress-track"><div class="app-progress-fill" style="width:45%; background:var(--color-accent-yellow);"></div></div><b>Média</b></div>
+            <div class="app-progress-row"><span>Água</span><div class="app-progress-track"><div class="app-progress-fill" style="width:60%; background:var(--color-accent-green);"></div></div><b>4,8/8</b></div>
+          </div>
+          <div class="app-card">
+            <h3>Sintomas mais relatados</h3>
+            <div class="app-chip-grid">
+              <div class="app-chip selected">Insônia</div>
+              <div class="app-chip selected">Fadiga</div>
+              <div class="app-chip selected">Dificuldade de concentração</div>
+            </div>
+          </div>
+        </div>
+        <div style="display:flex; gap:12px; flex-wrap:wrap;">
+          <button class="btn btn-primary" style="width:auto;" onclick="appNav(document.querySelector('[data-panel=psy-intervention]'))">Enviar mensagem</button>
+          <button class="btn btn-ghost" style="width:auto;" onclick="appNav(document.querySelector('[data-panel=psy-report]'))">Ver relatório completo</button>
+          <button class="btn btn-ghost" style="width:auto;" onclick="appNav(document.querySelector('[data-panel=psy-notes]'))">Ver prontuário</button>
+          <button class="btn btn-ghost" style="width:auto;" onclick="appNav(document.querySelector('[data-panel=psy-prescribe]'))">Prescrever atividade</button>
+        </div>
+      </section>
+
+      <section class="app-panel" id="panel-psy-notes">
+        <span class="app-back-link" onclick="appNav(document.querySelector('[data-panel=psy-patient]'))">← Voltar ao paciente</span>
+        <div class="app-card">
+          <h3 id="notes-name">Prontuário</h3>
+          <p style="color:var(--text-muted); font-size:0.85rem;">Registro clínico confidencial — visível apenas para você.</p>
+        </div>
+        <div class="app-card">
+          <h3>Nova anotação de sessão</h3>
+          <textarea class="app-textarea" id="note-input" rows="4" placeholder="Descreva observações clínicas, evolução do quadro, condutas adotadas..."></textarea>
+          <button class="btn btn-primary btn-sm" style="margin-top:12px;" onclick="addNote()">Salvar anotação</button>
+        </div>
+        <div class="app-card">
+          <h3>Histórico de anotações</h3>
+          <div class="app-list" id="notes-log">
+            <div class="app-list-item"><div class="app-list-avatar" style="background:var(--color-bg-soft);">📝</div><div><div style="font-weight:600; font-size:0.9rem;">Paciente relatou melhora na qualidade do sono após início da técnica de respiração.</div><div style="font-size:0.78rem; color:var(--text-muted);">Sessão de 28/07 · 50 min</div></div></div>
+            <div class="app-list-item"><div class="app-list-avatar" style="background:var(--color-bg-soft);">📝</div><div><div style="font-weight:600; font-size:0.9rem;">Primeira sessão de anamnese. Histórico familiar sem antecedentes relevantes.</div><div style="font-size:0.78rem; color:var(--text-muted);">Sessão de 14/07 · 50 min</div></div></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="app-panel" id="panel-psy-prescribe">
+        <span class="app-back-link" onclick="appNav(document.querySelector('[data-panel=psy-patient]'))">← Voltar ao paciente</span>
+        <div class="app-card">
+          <h3 id="prescribe-name">Prescrever atividade</h3>
+          <p style="color:var(--text-muted); font-size:0.85rem; margin-bottom:10px;">Escolha um recurso do app para recomendar ao paciente.</p>
+          <div class="app-chip-grid" id="prescribe-options">
+            <div class="app-chip" onclick="selectSingleChip(this,'prescribe-options')">🔥 Exercícios</div>
+            <div class="app-chip" onclick="selectSingleChip(this,'prescribe-options')">🧘‍♀️ Meditação guiada</div>
+            <div class="app-chip" onclick="selectSingleChip(this,'prescribe-options')">📔 Diário emocional</div>
+            <div class="app-chip" onclick="selectSingleChip(this,'prescribe-options')">🧘 Técnicas</div>
+            <div class="app-chip" onclick="selectSingleChip(this,'prescribe-options')">📚 Biblioteca</div>
+            <div class="app-chip" onclick="selectSingleChip(this,'prescribe-options')">📋 Plano de autocuidado</div>
+          </div>
+          <textarea class="app-textarea" id="prescribe-note" rows="2" placeholder="Instrução opcional para o paciente..." style="margin-top:12px;"></textarea>
+          <button class="btn btn-primary btn-sm" style="margin-top:12px;" onclick="prescribeSend()">Enviar prescrição</button>
+        </div>
+        <div class="app-card">
+          <h3>Atividades já prescritas</h3>
+          <div class="app-list" id="prescribe-log">
+            <div class="app-list-item"><div class="app-list-avatar" style="background:#EFE7FB;">🧘‍♀️</div><div><div style="font-weight:600; font-size:0.9rem;">Meditação guiada — 10 min</div><div style="font-size:0.78rem; color:var(--text-muted);">Prescrito em 28/07 · Concluído pelo paciente</div></div></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="app-panel" id="panel-psy-intervention">
+        <span class="app-back-link" onclick="appNav(document.querySelector('[data-panel=psy-patient]'))">← Voltar ao paciente</span>
+        <div class="app-card">
+          <h3 id="intervention-name">Mensagem</h3>
+          <textarea class="app-textarea" rows="3">Olá, percebi um aumento nos seus níveis de ansiedade. Vamos conversar?</textarea>
+        </div>
+        <div class="app-card">
+          <h3>Plano de ação</h3>
+          <p>Agendar sessão · Registrar observação · Acompanhar evolução</p>
+        </div>
+        <button class="btn btn-primary" style="width:220px;" onclick="sendIntervention()">Enviar mensagem</button>
+      </section>
+
+      <section class="app-panel" id="panel-psy-report">
+        <span class="app-back-link" onclick="appNav(document.querySelector('[data-panel=psy-patient]'))">← Voltar ao paciente</span>
+        <div class="app-grid-2">
+          <div class="app-card">
+            <h3 id="report-name">Evolução da semana</h3>
+            <div class="app-bar-chart">
+              <div class="app-bar" style="height:35%"></div>
+              <div class="app-bar" style="height:60%"></div>
+              <div class="app-bar" style="height:40%"></div>
+              <div class="app-bar accent" style="height:90%"></div>
+              <div class="app-bar" style="height:55%"></div>
+            </div>
+          </div>
+          <div class="app-card">
+            <h3>Comparativo com mês anterior</h3>
+            <div class="app-grid-2" style="gap:10px;">
+              <div class="app-stat"><div class="num" style="color:var(--color-accent-red); font-size:1.2rem;">+12%</div><div class="lbl">Ansiedade</div></div>
+              <div class="app-stat"><div class="num" style="color:var(--color-accent-green); font-size:1.2rem;">-10%</div><div class="lbl">Estresse</div></div>
+            </div>
+          </div>
+        </div>
+        <button class="btn btn-ghost" style="width:220px;" onclick="toast('Relatório do paciente baixado em PDF','success')">Baixar relatório (PDF)</button>
+      </section>
+
+      <!-- perfil (comum) -->
+      <section class="app-panel" id="panel-perfil">
+        <div class="app-card" style="align-items:center; text-align:center; display:flex; flex-direction:column; gap:8px;">
+          <div class="app-list-avatar" style="width:64px; height:64px; font-size:1.2rem; background:var(--color-secondary);">LA</div>
+          <h3 style="margin:0;" id="perfil-nome">Larissa Andrade</h3>
+          <p id="perfil-email">larissa@email.com</p>
+        </div>
+        <div class="app-card">
+          <div class="app-list">
+            <div class="app-list-item" onclick="appNav(document.querySelector('[data-panel=perfil-editar]'))">Editar perfil</div>
+            <div class="app-list-item" onclick="appNav(document.querySelector('[data-panel=perfil-notif]'))">Notificações</div>
+            <div class="app-list-item" onclick="appNav(document.querySelector('[data-panel=perfil-priv]'))">Privacidade</div>
+          </div>
+        </div>
+        <button class="btn btn-ghost" style="width:220px;" onclick="logoutApp()">Sair da conta</button>
+      </section>
+
+      <section class="app-panel" id="panel-perfil-editar">
+        <span class="app-back-link" onclick="appNav(document.querySelector('[data-panel=perfil]'))">← Voltar ao perfil</span>
+        <div class="app-card">
+          <h3>Editar perfil</h3>
+          <div style="display:flex; flex-direction:column; gap:12px;">
+            <input class="auth-field" id="edit-nome" value="Larissa Andrade" placeholder="Nome completo">
+            <input class="auth-field" id="edit-email" value="larissa@email.com" placeholder="E-mail">
+            <input class="auth-field" id="edit-curso" value="Psicologia — UFR" placeholder="Curso / Faculdade">
+            <input class="auth-field psy-only-field" id="edit-crp" value="CRP 06/123456" placeholder="Número do CRP">
+            <input class="auth-field psy-only-field" id="edit-especialidade" value="TCC · Ansiedade e estresse acadêmico" placeholder="Especialidades">
+            <textarea class="app-textarea psy-only-field" id="edit-bio" rows="3" placeholder="Bio profissional (visível para pacientes)">Psicóloga clínica com foco em saúde mental de estudantes universitários. Atendimento humanizado e baseado em evidências.</textarea>
+            <button class="btn btn-primary" onclick="saveProfile()">Salvar alterações</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="app-panel" id="panel-perfil-notif">
+        <span class="app-back-link" onclick="appNav(document.querySelector('[data-panel=perfil]'))">← Voltar ao perfil</span>
+        <div class="app-card">
+          <h3>Notificações</h3>
+          <div class="switch-row">
+            <div><strong>Lembrete de check-in</strong><small>Todos os dias às 20h</small></div>
+            <label class="switch"><input type="checkbox" checked onchange="toast(this.checked?'Lembrete ativado':'Lembrete desativado')"><span class="switch-track"></span></label>
+          </div>
+          <div class="switch-row">
+            <div><strong>Mensagens do psicólogo</strong><small>Alertas de novas mensagens</small></div>
+            <label class="switch"><input type="checkbox" checked onchange="toast(this.checked?'Alertas ativados':'Alertas desativados')"><span class="switch-track"></span></label>
+          </div>
+          <div class="switch-row">
+            <div><strong>Novidades da comunidade</strong><small>Curtidas e comentários</small></div>
+            <label class="switch"><input type="checkbox" onchange="toast(this.checked?'Notificações ativadas':'Notificações desativadas')"><span class="switch-track"></span></label>
+          </div>
+          <div class="switch-row">
+            <div><strong>E-mails semanais</strong><small>Resumo do seu progresso</small></div>
+            <label class="switch"><input type="checkbox" checked onchange="toast(this.checked?'E-mails ativados':'E-mails desativados')"><span class="switch-track"></span></label>
+          </div>
+        </div>
+      </section>
+
+      <section class="app-panel" id="panel-perfil-priv">
+        <span class="app-back-link" onclick="appNav(document.querySelector('[data-panel=perfil]'))">← Voltar ao perfil</span>
+        <div class="app-card">
+          <h3>Privacidade</h3>
+          <div class="switch-row">
+            <div><strong>Compartilhar dados com meu psicólogo</strong><small>Necessário para acompanhamento</small></div>
+            <label class="switch"><input type="checkbox" checked onchange="toast(this.checked?'Compartilhamento ativado':'Compartilhamento desativado','warn')"><span class="switch-track"></span></label>
+          </div>
+          <div class="switch-row">
+            <div><strong>Publicações anônimas na comunidade</strong><small>Seu nome nunca aparece</small></div>
+            <label class="switch"><input type="checkbox" checked onchange="toast(this.checked?'Modo anônimo ativado':'Modo anônimo desativado')"><span class="switch-track"></span></label>
+          </div>
+          <div class="switch-row">
+            <div><strong>Compartilhar com responsável</strong><small>Um contato de confiança pode ver alertas</small></div>
+            <label class="switch"><input type="checkbox" onchange="toast(this.checked?'Compartilhamento com responsável ativado':'Compartilhamento com responsável desativado')"><span class="switch-track"></span></label>
+          </div>
+        </div>
+        <button class="btn btn-ghost" style="width:260px;" onclick="toast('Solicitação de exclusão de dados enviada','warn')">Solicitar exclusão de dados</button>
+      </section>
+
+      <!-- psicólogo: agenda e mensagens -->
+      <section class="app-panel" id="panel-psy-agenda">
+        <div class="app-card">
+          <h3>Sessões de hoje</h3>
+          <div id="psy-agenda-today">
+            <div class="session-item"><div><b style="font-size:0.9rem;">Laura Alves</b><div style="font-size:0.78rem; color:var(--text-muted);">Sessão de acompanhamento</div></div><span class="session-time">10h00</span></div>
+            <div class="session-item"><div><b style="font-size:0.9rem;">Paulo Égidio</b><div style="font-size:0.78rem; color:var(--text-muted);">Avaliação de estresse</div></div><span class="session-time">13h30</span></div>
+            <div class="session-item"><div><b style="font-size:0.9rem;">Ana Clara</b><div style="font-size:0.78rem; color:var(--text-muted);">Primeira consulta</div></div><span class="session-time">16h00</span></div>
+          </div>
+        </div>
+        <div class="app-card">
+          <h3>Próximos dias</h3>
+          <div id="psy-agenda-week">
+            <div class="session-item"><div><b style="font-size:0.9rem;">Lucas Bueno</b><div style="font-size:0.78rem; color:var(--text-muted);">Amanhã</div></div><span class="session-time">09h00</span></div>
+            <div class="session-item"><div><b style="font-size:0.9rem;">Thaís Nunes</b><div style="font-size:0.78rem; color:var(--text-muted);">Quinta-feira</div></div><span class="session-time">11h00</span></div>
+          </div>
+        </div>
+        <button class="btn btn-primary" style="width:220px;" onclick="toast('Novo horário bloqueado na agenda','success')">Bloquear horário</button>
+      </section>
+
+      <section class="app-panel" id="panel-psy-mensagens">
+        <div class="app-grid-2">
+          <div class="app-card">
+            <h3>Conversas</h3>
+            <div class="app-list" id="psy-chat-list">
+              <div class="app-list-item" onclick="openChat('Laura Alves','LA','var(--color-secondary)')"><div class="app-list-avatar" style="background:var(--color-secondary);">LA</div><div><div style="font-weight:600; font-size:0.88rem;">Laura Alves</div><div style="font-size:0.78rem; color:var(--text-muted);">Obrigada pela conversa de hoje...</div></div></div>
+              <div class="app-list-item" onclick="openChat('Paulo Égidio','PE','var(--color-accent-yellow)')"><div class="app-list-avatar" style="background:var(--color-accent-yellow);">PE</div><div><div style="font-weight:600; font-size:0.88rem;">Paulo Égidio</div><div style="font-size:0.78rem; color:var(--text-muted);">Posso remarcar a sessão?</div></div></div>
+              <div class="app-list-item" onclick="openChat('Ana Clara','AC','var(--color-accent-green)')"><div class="app-list-avatar" style="background:var(--color-accent-green);">AC</div><div><div style="font-weight:600; font-size:0.88rem;">Ana Clara</div><div style="font-size:0.78rem; color:var(--text-muted);">Combinado, até lá!</div></div></div>
+            </div>
+          </div>
+          <div class="app-card">
+            <h3 id="chat-with-name">Selecione uma conversa</h3>
+            <div class="chat-thread" id="chat-thread">
+              <div class="chat-bubble them">Escolha um paciente na lista ao lado para ver a conversa.</div>
+            </div>
+            <div class="chat-input-row">
+              <input class="auth-field" id="chat-input" placeholder="Digite uma mensagem...">
+              <button class="btn btn-primary btn-sm" onclick="sendChat()">Enviar</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="app-panel" id="panel-psy-relatorios">
+        <div class="app-grid-3">
+          <div class="app-stat"><div class="num" style="color:var(--color-primary);">4,2</div><div class="lbl">Ansiedade média (0-5)</div></div>
+          <div class="app-stat"><div class="num" style="color:var(--color-accent-green);">87%</div><div class="lbl">Adesão às atividades</div></div>
+          <div class="app-stat"><div class="num" style="color:var(--color-accent-yellow);">6,4h</div><div class="lbl">Sono médio dos pacientes</div></div>
+        </div>
+        <div class="app-grid-2">
+          <div class="app-card">
+            <h3>Emoções mais relatadas (todos os pacientes)</h3>
+            <div class="app-bar-chart">
+              <div class="app-bar" style="height:80%"></div>
+              <div class="app-bar" style="height:55%"></div>
+              <div class="app-bar accent" style="height:65%"></div>
+              <div class="app-bar" style="height:40%"></div>
+              <div class="app-bar" style="height:30%"></div>
+            </div>
+            <div style="display:flex; justify-content:space-around; margin-top:8px;">
+              <small style="color:var(--text-muted)">Ansiedade</small><small style="color:var(--text-muted)">Tristeza</small><small style="color:var(--text-muted)">Estresse</small><small style="color:var(--text-muted)">Raiva</small><small style="color:var(--text-muted)">Medo</small>
+            </div>
+          </div>
+          <div class="app-card">
+            <h3>Evolução geral do consultório</h3>
+            <div class="app-bar-chart">
+              <div class="app-bar" style="height:45%"></div>
+              <div class="app-bar" style="height:55%"></div>
+              <div class="app-bar" style="height:50%"></div>
+              <div class="app-bar accent" style="height:70%"></div>
+              <div class="app-bar" style="height:65%"></div>
+              <div class="app-bar accent" style="height:82%"></div>
+            </div>
+          </div>
+        </div>
+        <div class="app-card">
+          <h3>Pacientes que mais evoluíram este mês</h3>
+          <div class="app-list">
+            <div class="app-list-item" onclick="openPatient('Ana Clara','AC','var(--color-accent-green)')"><div class="app-list-avatar" style="background:var(--color-accent-green);">AC</div><div><div style="font-weight:600; font-size:0.9rem;">Ana Clara</div><div style="font-size:0.78rem; color:var(--color-accent-green);">↓ 22% de ansiedade</div></div></div>
+            <div class="app-list-item" onclick="openPatient('Lucas Bueno','LB','var(--color-primary)')"><div class="app-list-avatar" style="background:var(--color-primary);">LB</div><div><div style="font-weight:600; font-size:0.9rem;">Lucas Bueno</div><div style="font-size:0.78rem; color:var(--color-accent-green);">↓ 15% de estresse</div></div></div>
+          </div>
+        </div>
+        <button class="btn btn-ghost" style="width:240px;" onclick="toast('Relatório geral do consultório baixado em PDF','success')">Baixar relatório geral (PDF)</button>
+      </section>
+
+      <section class="app-panel" id="panel-psy-financeiro">
+        <div class="app-grid-3">
+          <div class="app-stat"><div class="num" style="color:var(--color-accent-green);" id="fin-recebido">R$ 2.140</div><div class="lbl">Recebido este mês</div></div>
+          <div class="app-stat"><div class="num" style="color:var(--color-accent-yellow);" id="fin-pendente">R$ 480</div><div class="lbl">Pendente</div></div>
+          <div class="app-stat"><div class="num" style="color:var(--color-primary);">R$ 160</div><div class="lbl">Valor médio por sessão</div></div>
+        </div>
+        <div class="app-card">
+          <h3>Sessões do mês</h3>
+          <div class="app-list" id="finance-list">
+            <div class="goal-item" data-value="160"><div class="goal-check done" onclick="togglePayment(this)">✓</div><span>Laura Alves — Sessão 04/08</span><b style="margin-left:auto; color:var(--color-accent-green);">R$ 160 · Pago</b></div>
+            <div class="goal-item" data-value="160"><div class="goal-check done" onclick="togglePayment(this)">✓</div><span>Paulo Égidio — Sessão 05/08</span><b style="margin-left:auto; color:var(--color-accent-green);">R$ 160 · Pago</b></div>
+            <div class="goal-item" data-value="160"><div class="goal-check" onclick="togglePayment(this)"></div><span>Ana Clara — Sessão 06/08</span><b style="margin-left:auto; color:var(--color-accent-yellow);">R$ 160 · Pendente</b></div>
+            <div class="goal-item" data-value="160"><div class="goal-check" onclick="togglePayment(this)"></div><span>Lucas Bueno — Sessão 07/08</span><b style="margin-left:auto; color:var(--color-accent-yellow);">R$ 160 · Pendente</b></div>
+            <div class="goal-item" data-value="160"><div class="goal-check done" onclick="togglePayment(this)">✓</div><span>Thaís Nunes — Sessão 01/08</span><b style="margin-left:auto; color:var(--color-accent-green);">R$ 160 · Pago</b></div>
+          </div>
+        </div>
+        <button class="btn btn-ghost" style="width:220px;" onclick="toast('Extrato financeiro exportado','success')">Exportar extrato</button>
+      </section>
+
+      <section class="app-panel" id="panel-psy-materiais">
+        <div class="app-card">
+          <h3>Biblioteca de recursos para pacientes</h3>
+          <p style="color:var(--text-muted); font-size:0.85rem; margin-bottom:6px;">Visualize os materiais disponíveis no app e prescreva diretamente pela ficha do paciente.</p>
+          <div class="app-list">
+            <div class="app-list-item" onclick="window.open('paginas/exercicios.html','_blank')"><div class="app-list-avatar" style="background:#FBE4E5;">🔥</div><div><div style="font-weight:600; font-size:0.9rem;">Exercícios</div><div style="font-size:0.8rem; color:var(--text-muted);">Respiração guiada e alongamento</div></div></div>
+            <div class="app-list-item" onclick="window.open('paginas/meditacao.html','_blank')"><div class="app-list-avatar" style="background:#EFE7FB;">🧘‍♀️</div><div><div style="font-weight:600; font-size:0.9rem;">Meditação guiada</div><div style="font-size:0.8rem; color:var(--text-muted);">Sessões com temporizador</div></div></div>
+            <div class="app-list-item" onclick="window.open('paginas/diario.html','_blank')"><div class="app-list-avatar" style="background:#E4E9FB;">📔</div><div><div style="font-weight:600; font-size:0.9rem;">Diário emocional</div><div style="font-size:0.8rem; color:var(--text-muted);">Escreva seus sentimentos</div></div></div>
+            <div class="app-list-item" onclick="window.open('paginas/tecnicas.html','_blank')"><div class="app-list-avatar" style="background:var(--color-bg-soft);">🧘</div><div><div style="font-weight:600; font-size:0.9rem;">Técnicas</div><div style="font-size:0.8rem; color:var(--text-muted);">Relaxamento e foco, com prática guiada</div></div></div>
+            <div class="app-list-item" onclick="window.open('paginas/biblioteca.html','_blank')"><div class="app-list-avatar" style="background:#FDEBD0;">📚</div><div><div style="font-weight:600; font-size:0.9rem;">Biblioteca</div><div style="font-size:0.8rem; color:var(--text-muted);">Artigos sobre saúde mental</div></div></div>
+            <div class="app-list-item" onclick="window.open('paginas/plano.html','_blank')"><div class="app-list-avatar" style="background:#E4F7EC;">📋</div><div><div style="font-weight:600; font-size:0.9rem;">Plano</div><div style="font-size:0.8rem; color:var(--text-muted);">Plano de autocuidado</div></div></div>
+          </div>
+        </div>
+        <div class="app-card">
+          <h3>Prescrição rápida</h3>
+          <p style="color:var(--text-muted); font-size:0.85rem;">Para prescrever um material a um paciente específico, abra a ficha do paciente em <b>Pacientes</b> e use o botão <b>Prescrever atividade</b>.</p>
+          <button class="btn btn-primary btn-sm" style="margin-top:8px;" onclick="appNav(document.querySelector('[data-panel=psy-patients]'))">Ir para Pacientes</button>
+        </div>
+      </section>
+
+      <section class="app-panel" id="panel-psy-solicitacoes">
+        <div class="app-card">
+          <h3>Novos pacientes aguardando aprovação</h3>
+          <div class="app-list" id="requests-list">
+            <div class="app-list-item" style="align-items:center;">
+              <div class="app-list-avatar" style="background:var(--color-secondary);">MR</div>
+              <div style="flex:1;"><div style="font-weight:600; font-size:0.9rem;">Marina Rocha</div><div style="font-size:0.78rem; color:var(--text-muted);">Encontrou seu perfil pelo app · Psicologia, 2º ano</div></div>
+              <button class="btn btn-primary btn-sm" style="width:auto;" onclick="acceptRequest(this,'Marina Rocha')">Aceitar</button>
+              <button class="btn btn-ghost btn-sm" style="width:auto;" onclick="declineRequest(this)">Recusar</button>
+            </div>
+            <div class="app-list-item" style="align-items:center;">
+              <div class="app-list-avatar" style="background:var(--color-accent-yellow);">JS</div>
+              <div style="flex:1;"><div style="font-weight:600; font-size:0.9rem;">João Silveira</div><div style="font-size:0.78rem; color:var(--text-muted);">Indicado pela universidade · Engenharia, 4º ano</div></div>
+              <button class="btn btn-primary btn-sm" style="width:auto;" onclick="acceptRequest(this,'João Silveira')">Aceitar</button>
+              <button class="btn btn-ghost btn-sm" style="width:auto;" onclick="declineRequest(this)">Recusar</button>
+            </div>
+            <div class="app-list-item" style="align-items:center;">
+              <div class="app-list-avatar" style="background:var(--color-accent-red);">BF</div>
+              <div style="flex:1;"><div style="font-weight:600; font-size:0.9rem;">Beatriz Ferreira</div><div style="font-size:0.78rem; color:var(--text-muted);">Solicitação via app · Medicina, 1º ano</div></div>
+              <button class="btn btn-primary btn-sm" style="width:auto;" onclick="acceptRequest(this,'Beatriz Ferreira')">Aceitar</button>
+              <button class="btn btn-ghost btn-sm" style="width:auto;" onclick="declineRequest(this)">Recusar</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </main>
+  </div>
+</div>
+
+<script src="js/index.js"></script>
+
+</body>
+</html>
