@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Diário emocional — Mente Aberta</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/estilo.css">
+</head>
+<body>
+
+  <div class="page-top">
+    <div class="container page-top-inner">
+      <span class="back-link" onclick="voltarParaRecursos()">← Voltar para recursos</span>
+      <div class="page-title">
+        <div class="page-icon">📔</div>
+        <div><h1>Diário emocional</h1><p>Um espaço para colocar seus sentimentos no papel</p></div>
+      </div>
+      <span style="width:90px"></span>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="hero-band">
+      <h2>Como você está se sentindo?</h2>
+      <p>Escrever sobre o que você sente ajuda a organizar os pensamentos. Não existe forma certa de fazer isso — escreva do jeito que vier.</p>
+    </div>
+
+    <main>
+      <div class="grid-4" id="diario-stats">
+        <div class="stat"><div class="num" id="stat-total">0</div><div class="lbl">Registros</div></div>
+        <div class="stat"><div class="num" id="stat-streak">0</div><div class="lbl">Dias seguidos</div></div>
+        <div class="stat"><div class="num" id="stat-week">0</div><div class="lbl">Essa semana</div></div>
+        <div class="stat"><div class="num" id="stat-mood">—</div><div class="lbl">Humor comum</div></div>
+      </div>
+
+      <div class="card">
+        <h3>Novo registro</h3>
+        <p style="margin-bottom:12px;">Como você está se sentindo agora?</p>
+        <div class="chip-grid" id="mood-chips" style="margin-bottom:14px;">
+          <div class="chip" data-mood="😊" onclick="selectMood(this)">😊 Bem</div>
+          <div class="chip" data-mood="😐" onclick="selectMood(this)">😐 Neutro</div>
+          <div class="chip" data-mood="😟" onclick="selectMood(this)">😟 Ansioso</div>
+          <div class="chip" data-mood="😢" onclick="selectMood(this)">😢 Triste</div>
+          <div class="chip" data-mood="😴" onclick="selectMood(this)">😴 Cansado</div>
+          <div class="chip" data-mood="😡" onclick="selectMood(this)">😡 Irritado</div>
+        </div>
+        <textarea class="field" id="diario-note" placeholder="O que você quer registrar hoje?"></textarea>
+        <button class="btn btn-primary btn-block" style="margin-top:14px;" onclick="addEntry()">Salvar registro</button>
+      </div>
+
+      <div class="card">
+        <h3>Seus registros</h3>
+        <div id="entries-list"></div>
+        <div class="empty-state" id="empty-state" style="display:none;">
+          <div class="emoji">📔</div>
+          <p>Você ainda não tem registros. Escreva o primeiro acima.</p>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <div class="corner-nav" id="corner-nav">
+    <div class="corner-nav-menu" id="corner-nav-menu">
+      <div class="corner-nav-title">Outras ferramentas</div>
+      <a class="corner-nav-item" href="biblioteca.html">📚 Biblioteca</a>
+      <a class="corner-nav-item" href="exercicios.html">🔥 Exercícios</a>
+      <a class="corner-nav-item" href="meditacao.html">🧘‍♀️ Meditação</a>
+      <a class="corner-nav-item" href="plano.html">📋 Plano</a>
+      <a class="corner-nav-item" href="tecnicas.html">🧘 Técnicas</a>
+      <a class="corner-nav-item current" href="diario.html">📔 Diário</a>
+      <a class="corner-nav-item" href="suporte.html">🆘 Suporte</a>
+    </div>
+    <button class="corner-nav-toggle" id="corner-nav-toggle" onclick="toggleCornerNav()" aria-label="Outras ferramentas">🧭</button>
+  </div>
+
+  <script src="../js/diario.js"></script>
+</body>
+</html>
