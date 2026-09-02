@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Biblioteca — Mente Aberta</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/estilo.css">
+</head>
+<body>
+
+  <div class="page-top">
+    <div class="container page-top-inner">
+      <span class="back-link" onclick="voltarParaRecursos()">← Voltar para recursos</span>
+      <div class="page-title">
+        <div class="page-icon">📚</div>
+        <div><h1>Biblioteca</h1><p>Artigos sobre saúde mental para estudantes</p></div>
+      </div>
+      <span style="width:90px"></span>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="hero-band">
+      <h2>Entenda o que você sente</h2>
+      <p>Textos curtos e práticos, escritos para a rotina universitária. Marque favoritos e acompanhe o que já leu.</p>
+    </div>
+
+    <main>
+      <div class="card">
+        <div class="search-row" style="display:flex; gap:10px; margin-bottom:12px;">
+          <input class="field" id="search-input" placeholder="🔍 Buscar artigos..." oninput="renderArticles()">
+        </div>
+        <div class="cat-filter" id="cat-filter" style="display:flex; gap:8px; flex-wrap:wrap;">
+          <div class="chip selected" onclick="filterCat(this,'todos')">Todos</div>
+          <div class="chip" onclick="filterCat(this,'ansiedade')">Ansiedade</div>
+          <div class="chip" onclick="filterCat(this,'sono')">Sono</div>
+          <div class="chip" onclick="filterCat(this,'produtividade')">Produtividade</div>
+          <div class="chip" onclick="filterCat(this,'relacoes')">Relações</div>
+          <div class="chip" onclick="filterCat(this,'terapia')">Terapia</div>
+          <div class="chip" onclick="filterCat(this,'favoritos')">⭐ Favoritos</div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>Artigos <span id="results-count" style="color:var(--text-muted); font-weight:400; font-size:0.8rem;"></span></h3>
+        <div id="article-list"></div>
+      </div>
+
+      <div class="card">
+        <h3>Seu progresso de leitura</h3>
+        <div class="progress-row"><span>Lidos</span><div class="progress-track"><div class="progress-fill" id="read-progress"></div></div><b id="read-progress-txt"></b></div>
+      </div>
+    </main>
+  </div>
+
+  <div class="modal-overlay" id="article-modal">
+    <div class="modal-box article">
+      <h3 id="modal-title"></h3>
+      <p id="modal-meta" style="font-size:0.78rem; color:var(--text-muted); margin-bottom:14px;"></p>
+      <div id="modal-body"></div>
+      <div style="display:flex; gap:10px; margin-top:18px;">
+        <button class="btn btn-primary btn-sm" onclick="closeModal()">Concluir leitura</button>
+        <button class="btn btn-ghost btn-sm" onclick="closeModalNoRead()">Fechar</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="../js/biblioteca.js"></script>
+</body>
+</html>
