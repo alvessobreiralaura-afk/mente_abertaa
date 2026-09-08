@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Exercícios — Mente Aberta</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/estilo.css">
+</head>
+<body>
+
+  <div class="page-top">
+    <div class="container page-top-inner">
+      <span class="back-link" onclick="voltarParaRecursos()">← Voltar para recursos</span>
+      <div class="page-title">
+        <div class="page-icon">🔥</div>
+        <div><h1>Exercícios</h1><p>Respiração, alongamento e áudio guiado</p></div>
+      </div>
+      <span style="width:90px"></span>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="hero-band">
+      <h2>Mova o corpo, acalme a mente</h2>
+      <p>Práticas rápidas, pensadas para encaixar entre uma aula e outra. Escolha uma técnica de respiração, siga uma rotina de alongamento guiada ou relaxe com um áudio narrado — tudo com temporizador automático.</p>
+    </div>
+
+    <main>
+      <div class="grid-4" id="exercicios-stats">
+        <div class="stat"><div class="num" id="stat-streak">0</div><div class="lbl">Dias seguidos</div></div>
+        <div class="stat"><div class="num" id="stat-sessions">0</div><div class="lbl">Sessões totais</div></div>
+        <div class="stat"><div class="num" id="stat-minutes">0</div><div class="lbl">Minutos praticados</div></div>
+        <div class="stat"><div class="num" id="stat-week">0/5</div><div class="lbl">Meta semanal</div></div>
+      </div>
+
+      <div class="tabs">
+        <button class="tab-btn active" onclick="switchTab(this,'tab-respiracao')">🌬️ Respiração</button>
+        <button class="tab-btn" onclick="switchTab(this,'tab-alongamento')">🤸 Alongamento</button>
+        <button class="tab-btn" onclick="switchTab(this,'tab-audio')">🎧 Áudio guiado</button>
+        <button class="tab-btn" onclick="switchTab(this,'tab-progresso')">📈 Meu progresso</button>
+      </div>
+
+      <!-- RESPIRAÇÃO -->
+      <section class="tab-panel active" id="tab-respiracao">
+        <div class="card">
+          <h3>Escolha uma técnica</h3>
+          <div class="breath-picker" id="breath-picker">
+            <div class="breath-opt selected" data-in="4" data-hold="7" data-out="8" data-hold2="0" data-cycles="4" onclick="selectBreath(this)"><div class="tt">4-7-8</div><div class="ss">Relaxar / dormir</div></div>
+            <div class="breath-opt" data-in="4" data-hold="4" data-out="4" data-hold2="4" data-cycles="5" onclick="selectBreath(this)"><div class="tt">Quadrada</div><div class="ss">Foco / calma</div></div>
+            <div class="breath-opt" data-in="5" data-hold="0" data-out="5" data-hold2="0" data-cycles="6" onclick="selectBreath(this)"><div class="tt">Coerente</div><div class="ss">Equilíbrio</div></div>
+            <div class="breath-opt" data-in="4" data-hold="0" data-out="6" data-hold2="0" data-cycles="5" onclick="selectBreath(this)"><div class="tt">4-6</div><div class="ss">Ansiedade</div></div>
+          </div>
+          <div style="text-align:center;">
+            <div class="breath-circle" id="breath-circle">Pronto</div>
+            <div class="breath-phase" id="breath-phase">Toque em começar</div>
+            <p id="breath-count" style="margin-top:8px; font-family:var(--font-mono); font-size:0.8rem; color:var(--text-muted);">Ciclo 0 de 0</p>
+            <div style="display:flex; gap:12px; justify-content:center; margin-top:14px;">
+              <button class="btn btn-primary btn-sm" id="breath-start-btn" onclick="startBreathing()">Começar</button>
+              <button class="btn btn-ghost btn-sm" onclick="stopBreathing()">Parar</button>
+            </div>
+          </div>
+        </div>
+        <div class="card">
+          <h3>Sobre esta técnica</h3>
+          <p id="breath-description">A respiração 4-7-8 é uma técnica clássica para acalmar o sistema nervoso: inspire em 4 segundos, segure por 7 e solte lentamente em 8. Repita por 4 ciclos.</p>
+        </div>
+      </section>
+
+      <!-- ALONGAMENTO -->
+      <section class="tab-panel" id="tab-alongamento">
+        <div class="card">
+          <h3>Rotinas de alongamento</h3>
+          <div class="grid-3" id="routine-list">
+            <div class="routine-card active" data-routine="manha" onclick="selectRoutine(this)"><b>☀️ Manhã</b><p style="margin-top:4px; font-size:0.8rem;">4 min · desperte o corpo</p></div>
+            <div class="routine-card" data-routine="escritorio" onclick="selectRoutine(this)"><b>💺 Estudo/escritório</b><p style="margin-top:4px; font-size:0.8rem;">5 min · pescoço e ombros</p></div>
+            <div class="routine-card" data-routine="noite" onclick="selectRoutine(this)"><b>🌙 Antes de dormir</b><p style="margin-top:4px; font-size:0.8rem;">5 min · relaxamento total</p></div>
+          </div>
+        </div>
+        <div class="card" style="text-align:center;">
+          <h3 id="routine-title">Alongamento da manhã</h3>
+          <div class="timer-ring" id="stretch-ring" style="--pct:0;"><span id="stretch-time">4:00</span></div>
+          <div id="stretch-steps" style="text-align:left; max-width:340px; margin:0 auto;"></div>
+          <div style="display:flex; gap:12px; justify-content:center; margin-top:14px;">
+            <button class="btn btn-primary btn-sm" id="stretch-btn" onclick="toggleStretch()">Começar rotina</button>
+            <button class="btn btn-ghost btn-sm" onclick="skipStep()">Pular etapa</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- ÁUDIO -->
+      <section class="tab-panel" id="tab-audio">
+        <div class="card">
+          <h3>Áudios guiados</h3>
+          <div class="list" id="audio-track-list"></div>
+        </div>
+        <div class="card player-card" style="text-align:center;">
+          <h3 id="audio-now-title">Selecione um áudio</h3>
+          <div class="player-visualizer" id="audio-visualizer">
+            <div class="player-bar"></div><div class="player-bar"></div><div class="player-bar"></div><div class="player-bar"></div><div class="player-bar"></div><div class="player-bar"></div><div class="player-bar"></div>
+          </div>
+          <p id="audio-time" style="font-family:var(--font-mono); font-size:0.8rem; color:var(--text-muted);">0:00 / 0:00</p>
+          <button class="btn btn-primary btn-sm" id="audio-btn" onclick="toggleAudio()">▶ Reproduzir</button>
+          <div style="display:flex; align-items:center; gap:10px; margin-top:16px;">
+            <span style="font-size:0.8rem;">🔈</span>
+            <input type="range" id="audio-volume" min="0" max="100" value="70" style="flex:1;" oninput="setAudioVolume(this.value)">
+            <span style="font-size:0.8rem;">🔊</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- PROGRESSO -->
+      <section class="tab-panel" id="tab-progresso">
+        <div class="card">
+          <h3>Últimos 7 dias</h3>
+          <div class="streak-calendar" id="streak-calendar"></div>
+        </div>
+        <div class="card">
+          <h3>Meta semanal de prática</h3>
+          <div class="progress-row"><div class="progress-track"><div class="progress-fill" id="week-goal-fill" style="width:0%;"></div></div></div>
+          <div style="display:flex; align-items:center; gap:10px; margin-top:12px;">
+            <span style="font-size:0.85rem; color:var(--text-muted);">Meta:</span>
+            <input type="range" id="week-goal-slider" min="1" max="7" value="5" oninput="updateWeekGoalLabel(this.value)">
+            <b id="week-goal-label" style="font-family:var(--font-mono);">5 sessões</b>
+          </div>
+        </div>
+        <div class="card">
+          <h3>Histórico recente</h3>
+          <div class="list" id="history-list"></div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script src="../js/exercicios.js"></script>
+</body>
+</html>
