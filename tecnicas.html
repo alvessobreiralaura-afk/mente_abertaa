@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Técnicas — Mente Aberta</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/estilo.css">
+</head>
+<body>
+
+  <div class="page-top">
+    <div class="container page-top-inner">
+      <span class="back-link" onclick="voltarParaRecursos()">← Voltar para recursos</span>
+      <div class="page-title">
+        <div class="page-icon">🧘</div>
+        <div><h1>Técnicas</h1><p>Relaxamento e foco com prática guiada</p></div>
+      </div>
+      <span style="width:90px"></span>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="hero-band">
+      <h2>Uma técnica para cada momento</h2>
+      <p>Ferramentas rápidas e baseadas em evidências para lidar com ansiedade, procrastinação e sobrecarga — cada uma com um exercício guiado e cronometrado.</p>
+    </div>
+
+    <main>
+      <div class="cat-filter" id="cat-filter">
+        <div class="chip selected" onclick="filterCat(this,'todas')">Todas</div>
+        <div class="chip" onclick="filterCat(this,'ansiedade')">Ansiedade</div>
+        <div class="chip" onclick="filterCat(this,'foco')">Foco</div>
+        <div class="chip" onclick="filterCat(this,'sono')">Sono</div>
+        <div class="chip" onclick="filterCat(this,'emocoes')">Emoções</div>
+      </div>
+
+      <div class="card">
+        <div id="tech-list"></div>
+      </div>
+
+      <div class="card" id="practice-card" style="display:none; text-align:center;">
+        <h3 id="practice-title"></h3>
+        <div class="timer-ring" id="technique-ring" style="--pct:0;"><span id="technique-time">0:00</span></div>
+        <p id="technique-label" style="font-size:0.85rem; color:var(--text-muted);"></p>
+        <button class="btn btn-ghost btn-sm" onclick="stopTechnique()">Parar prática</button>
+      </div>
+
+      <div class="card">
+        <h3>Suas práticas recentes</h3>
+        <div id="practice-history">
+          <div class="empty-state"><div class="emoji">🌿</div>Suas práticas concluídas vão aparecer aqui.</div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script src="../js/tecnicas.js"></script>
+</body>
+</html>
