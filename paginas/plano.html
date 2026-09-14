@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Plano de autocuidado — Mente Aberta</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/estilo.css">
+</head>
+<body>
+
+  <div class="page-top">
+    <div class="container page-top-inner">
+      <span class="back-link" onclick="voltarParaRecursos()">← Voltar para recursos</span>
+      <div class="page-title">
+        <div class="page-icon">📋</div>
+        <div><h1>Plano de autocuidado</h1><p>Metas semanais e hábitos de bem-estar</p></div>
+      </div>
+      <span style="width:90px"></span>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="hero-band">
+      <h2>Cuide de você, um dia de cada vez</h2>
+      <p>Monte metas simples e realistas, acompanhe sua constância na semana e ajuste o plano conforme sua rotina muda.</p>
+    </div>
+
+    <main>
+      <div class="card">
+        <h3>Progresso geral</h3>
+        <div class="progress-row"><div class="progress-track"><div class="progress-fill" id="overall-progress"></div></div><b id="overall-progress-txt"></b></div>
+      </div>
+
+      <div class="card">
+        <h3>Suas metas</h3>
+        <div class="list" id="plano-list"></div>
+        <div class="goal-add-row">
+          <input class="field" id="new-goal-input" placeholder="Adicionar nova meta...">
+          <button class="btn btn-primary btn-sm" onclick="addGoal()">Adicionar</button>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>Modelos prontos</h3>
+        <p style="margin-bottom:10px;">Adicione um conjunto de metas pensado para uma necessidade específica.</p>
+        <div class="grid-3">
+          <div class="template-card" onclick="applyTemplate('sono')"><b>😴 Melhorar o sono</b><p style="font-size:0.8rem; margin-top:4px;">4 metas</p></div>
+          <div class="template-card" onclick="applyTemplate('ansiedade')"><b>💙 Reduzir ansiedade</b><p style="font-size:0.8rem; margin-top:4px;">4 metas</p></div>
+          <div class="template-card" onclick="applyTemplate('estudos')"><b>📚 Rotina de estudos</b><p style="font-size:0.8rem; margin-top:4px;">4 metas</p></div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>Constância na semana</h3>
+        <p style="margin-bottom:6px;">Marque os dias em que você cumpriu ao menos uma meta do plano.</p>
+        <div class="week-grid" id="week-grid"></div>
+      </div>
+    </main>
+  </div>
+
+  <script src="../js/plano.js"></script>
+</body>
+</html>
